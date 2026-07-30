@@ -1,0 +1,10 @@
+/* Isolated navigation-menu correction. */
+
+.menu-panel__content {
+  color: #fff;
+}
+
+.menu-panel__content > a[href="/#services"],
+.menu-panel__content > a[href="/#contact"] {
+  display: none;
+}

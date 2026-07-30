@@ -1,0 +1,25 @@
+/* Isolated seven-card sizing for the horizontal gallery only. */
+
+.horizontal-gallery {
+  height: 660vh;
+}
+
+.horizontal-gallery__track {
+  transform: translateX(
+    calc(var(--progress) * (100vw - 100%))
+  );
+}
+
+@media (max-width: 900px) {
+  .horizontal-gallery {
+    height: 500svh;
+    min-height: 176rem;
+    max-height: 316rem;
+  }
+
+  .horizontal-gallery__track {
+    transform: translateX(
+      calc(var(--progress) * (100vw - 100%))
+    );
+  }
+}

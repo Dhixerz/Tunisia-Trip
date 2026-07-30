@@ -1,0 +1,19 @@
+@media (max-width: 900px) {
+  .home-hero__title {
+    bottom: clamp(2rem, 4.8svh, 3rem);
+  }
+
+  .home-hero__title span {
+    bottom: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .home-hero__title {
+    bottom: 1.8rem;
+  }
+
+  .home-hero__title span {
+    bottom: 0;
+  }
+}

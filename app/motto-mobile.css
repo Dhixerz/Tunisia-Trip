@@ -1,0 +1,98 @@
+/* Targeted mobile correction for the VENI / VIDI / TUNI scroll scene only. */
+
+@media (max-width: 900px) {
+  .motto-collage__sticky {
+    isolation: isolate;
+  }
+
+  .motto-collage img {
+    will-change: transform;
+  }
+
+  .motto-collage__a {
+    transform:
+      translate3d(
+        calc(var(--progress) * -3vw),
+        calc(var(--progress) * -2rem),
+        0
+      )
+      rotate(calc(-10deg + var(--progress) * 4deg));
+  }
+
+  .motto-collage__b {
+    transform:
+      translate3d(
+        calc(var(--progress) * 3vw),
+        calc(var(--progress) * -1.5rem),
+        0
+      )
+      rotate(calc(10deg - var(--progress) * 4deg));
+  }
+
+  .motto-collage__c {
+    transform:
+      translate3d(
+        calc(var(--progress) * -2vw),
+        calc(var(--progress) * -2rem),
+        0
+      )
+      rotate(calc(-10deg + var(--progress) * 4deg));
+  }
+
+  .motto-collage__d {
+    transform:
+      translate3d(
+        calc(var(--progress) * 2vw),
+        calc(var(--progress) * -2.25rem),
+        0
+      )
+      rotate(calc(10deg - var(--progress) * 4deg));
+  }
+
+  .motto-collage__word {
+    line-height: 0.9;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  .motto-collage__word--veni {
+    top: 20%;
+    left: 22%;
+    transform: translateY(calc(var(--progress) * -0.8rem));
+  }
+
+  .motto-collage__word--vidi {
+    top: 53%;
+    right: 12%;
+    bottom: auto;
+    z-index: 4;
+    font-size: clamp(2rem, 9vw, 2.85rem);
+    transform: translateX(calc(var(--progress) * -1rem));
+  }
+
+  .motto-collage__word--vici {
+    top: 70%;
+    left: 50%;
+    z-index: 3;
+    width: auto;
+    font-size: clamp(4.1rem, 20vw, 6.4rem);
+    text-align: center;
+    transform:
+      translate(-50%, -50%)
+      scale(calc(0.82 + var(--progress) * 0.16));
+    transform-origin: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .motto-collage__word--vidi {
+    top: 52%;
+    right: 10%;
+    font-size: clamp(1.9rem, 9vw, 2.25rem);
+  }
+
+  .motto-collage__word--vici {
+    top: 70%;
+    font-size: clamp(3.8rem, 19vw, 4.5rem);
+  }
+}

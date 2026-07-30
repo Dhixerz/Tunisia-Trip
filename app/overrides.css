@@ -1,0 +1,71 @@
+.cinematic-scene {
+  height: 850vh;
+}
+
+.cinematic-scene .frame-one {
+  opacity: clamp(
+    0,
+    min(
+      calc((var(--progress) - 0.03) * 12),
+      calc((0.25 - var(--progress)) * 12)
+    ),
+    1
+  );
+}
+
+.cinematic-scene .frame-two {
+  opacity: clamp(
+    0,
+    min(
+      calc((var(--progress) - 0.18) * 12),
+      calc((0.43 - var(--progress)) * 12)
+    ),
+    1
+  );
+}
+
+.cinematic-scene .frame-three {
+  opacity: clamp(
+    0,
+    min(
+      calc((var(--progress) - 0.36) * 12),
+      calc((0.61 - var(--progress)) * 12)
+    ),
+    1
+  );
+}
+
+.cinematic-scene .frame-four {
+  opacity: clamp(
+    0,
+    min(
+      calc((var(--progress) - 0.52) * 12),
+      calc((0.83 - var(--progress)) * 12)
+    ),
+    1
+  );
+}
+
+.case-hero__name,
+.case-hero__meta {
+  transform: translateY(-2.2rem);
+}
+
+.editorial-hero > p {
+  width: min(48%, 46rem);
+}
+
+@media (max-width: 900px) {
+  .cinematic-scene {
+    height: 660vh;
+  }
+
+  .case-hero__name,
+  .case-hero__meta {
+    transform: none;
+  }
+
+  .editorial-hero > p {
+    width: 100%;
+  }
+}

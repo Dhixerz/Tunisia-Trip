@@ -1,0 +1,19 @@
+@media (max-width: 900px) {
+  .motto-collage__word--vidi {
+    top: 49.5%;
+  }
+
+  .motto-collage__word--vici {
+    top: 61%;
+  }
+}
+
+@media (max-width: 360px) {
+  .motto-collage__word--vidi {
+    top: 49%;
+  }
+
+  .motto-collage__word--vici {
+    top: 61%;
+  }
+}
