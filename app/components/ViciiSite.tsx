@@ -297,6 +297,7 @@ function SiteHeader({ tone = "light" }: { tone?: "light" | "dark" }) {
             ["Day-4", "/day4"],
             ["Day-5", "/day5"],
             ["Day-6", "/day6"],
+            ["Day-7", "/day7"],
             ["Services", "/#services"],
             ["Contact", "/#contact"],
           ].map(([label, href]) => (
@@ -345,6 +346,7 @@ function Footer() {
           <a href="/day4">Day-4</a>
           <a href="/day5">Day-5</a>
           <a href="/day6">Day-6</a>
+          <a href="/day7">Day-7</a>
           <a href="/#services">Services</a>
           <a href="/#contact">Contact</a>
           <small>All Rights Reserved.</small>
