@@ -373,7 +373,7 @@ export default function Day2Page() {
             ["Day-1", "/day1"],
             ["Day-2", "/day2"],
             ["Day-3", "/day3"],
-            ["Works", "/works"],
+            ["Day-4", "/day4"],
           ].map(([label, href], index) => (
             <a
               href={href}

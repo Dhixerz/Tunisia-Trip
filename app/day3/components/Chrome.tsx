@@ -10,7 +10,7 @@ const navItems = [
   { label: "Day-1", href: "/day1" },
   { label: "Day-2", href: "/day2" },
   { label: "Day-3", href: "/day3" },
-  { label: "Works", href: "/works" },
+  { label: "Day-4", href: "/day4" },
 ];
 
 export function Chrome() {
