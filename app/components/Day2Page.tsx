@@ -67,7 +67,6 @@ function ServiceMedia({
       <video
         ref={videoRef}
         src={src}
-        autoPlay
         loop
         muted={muted}
         playsInline
@@ -138,26 +137,22 @@ const SERVICES = [
     ],
   },
   {
-    title: "Content Creation",
-    tagline: "Words, visuals, and videos that speak human.",
+    title: "Blacko The Cat",
+    tagline: "Dream Cat ^^",
     tags: [
-      "Copywriting",
-      "Social Media Assets",
-      "Video & Motion Graphics",
-      "Animation",
-      "Brand Story Videos",
-      "Scriptwriting",
-      "Infographic Design",
-      "Paid Ad Creative",
-      "Infographics",
+      "Black",
+      "African Cat",
+      "Blacko",
+      "Blackie",
+      "Cutie Cat",
+      "Dark Cat",
     ],
-    copy: "Scroll-stopping stories, lively visuals, and motion-led content designed to make a brand feel unmistakably human.",
+    copy: "You found your dream blackie cattie babe! He has been under the sun for too long probably, explains the color.",
     images: [
-      "/day2/service-brand-4.jpg",
-      "/day2/service-web-3.jpg",
-      "/day2/service-brand-1.gif",
-      "/day2/service-web-2.gif",
+      "/day2/blacko-video.mp4",
+      "/day2/blacko-1.jpg",
     ],
+    muteAllVideos: true,
   },
   {
     title: "Digital Marketing",
@@ -591,7 +586,7 @@ export default function Day2Page() {
                         <ServiceMedia
                           src={image}
                           isOpen={isOpen}
-                          muted={imageIndex !== 0}
+                          muted={Boolean(item.muteAllVideos || imageIndex !== 0)}
                           key={`${image}-${imageIndex}`}
                         />
                       ))}
