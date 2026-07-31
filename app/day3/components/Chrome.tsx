@@ -11,9 +11,14 @@ const navItems = [
   { label: "Day-2", href: "/day2" },
   { label: "Day-3", href: "/day3" },
   { label: "Day-4", href: "/day4" },
+  { label: "Day-5", href: "/day5" },
 ];
 
-export function Chrome() {
+type ChromeProps = {
+  theme?: "dark" | "light";
+};
+
+export function Chrome({ theme = "dark" }: ChromeProps) {
   const progress = useScrollProgress();
   const [open, setOpen] = useState(false);
 
@@ -24,21 +29,25 @@ export function Chrome() {
     };
   }, [open]);
 
+  const isLight = theme === "light" && !open;
+
   return (
     <>
       <div className="grain-layer" aria-hidden />
 
-      <div className="fixed inset-x-0 top-0 z-50 h-px bg-bone/10" aria-hidden>
+      <div className="fixed inset-x-0 top-0 z-[60] h-px bg-bone/10" aria-hidden>
         <div
           className="h-px bg-umber transition-[width] duration-200 ease-out"
           style={{ width: `${progress * 100}%` }}
         />
       </div>
 
-      <header className="fixed inset-x-0 top-0 z-50 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-6 md:px-10">
+      <header className="fixed inset-x-0 top-0 z-[60] grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-6 md:px-10">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="eyebrow min-w-0 text-left text-bone"
+          className={`eyebrow min-w-0 text-left transition-colors duration-300 ${
+            isLight ? "text-ink" : "text-bone"
+          }`}
         >
           A.T. — Tunisia ’26
         </button>
@@ -50,7 +59,9 @@ export function Chrome() {
           {[0, 1, 2].map((i) => (
             <span
               key={i}
-              className="block h-px w-full bg-bone transition-transform duration-[400ms]"
+              className={`block h-px w-full transition-all duration-[400ms] ${
+                isLight ? "bg-ink" : "bg-bone"
+              }`}
               style={{
                 transform: open
                   ? i === 0
@@ -67,7 +78,7 @@ export function Chrome() {
       </header>
 
       <nav
-        className={`fixed inset-0 z-40 bg-ink/97 backdrop-blur-md transition-opacity duration-500 ${
+        className={`fixed inset-0 z-50 bg-ink/97 backdrop-blur-md transition-opacity duration-500 ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
         style={{ transitionTimingFunction: "cubic-bezier(0.4,0,0.2,1)" }}

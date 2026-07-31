@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@theme {
+  --font-display: "Archivo Black", system-ui, sans-serif;
+  --font-hand: "Caveat", cursive;
+  --color-paper: oklch(0.993 0.021 106.5);
+  --color-sand: oklch(0.933 0.062 89.5);
+  --color-ink: oklch(0.145 0.004 325);
+  --color-teal: oklch(0.845 0.132 178.5);
+  --color-violet: oklch(0.487 0.253 291.5);
+  --color-mauve: oklch(0.485 0.052 12.5);
+}
+
 @font-face {
   font-family: "Instrument Serif";
   src: url("/assets/instrument-regular.woff2") format("woff2");

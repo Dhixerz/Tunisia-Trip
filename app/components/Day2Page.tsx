@@ -374,6 +374,7 @@ export default function Day2Page() {
             ["Day-2", "/day2"],
             ["Day-3", "/day3"],
             ["Day-4", "/day4"],
+            ["Day-5", "/day5"],
           ].map(([label, href], index) => (
             <a
               href={href}
@@ -492,9 +493,8 @@ export default function Day2Page() {
 
             return (
               <article
-                className={`day2-service-card day2-service-card--${index + 1} ${
-                  isOpen ? "is-open" : ""
-                }`}
+                className={`day2-service-card day2-service-card--${index + 1} ${isOpen ? "is-open" : ""
+                  }`}
                 key={item.title}
               >
                 <button
