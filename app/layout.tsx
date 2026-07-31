@@ -9,6 +9,7 @@ import "./motto-mobile-spacing.css";
 import "./gallery-seven.css";
 import "./menu-navigation-fix.css";
 import "./day2.css";
+import "./day3/day3.css";
 
 const siteTitle = "TUNI — Multidisciplinary Creative Studio";
 const siteDescription =
@@ -56,6 +57,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@300;400;500&display=swap"
+        />
+      </head>
       <body>
         {children}
         <GallerySevenCards />

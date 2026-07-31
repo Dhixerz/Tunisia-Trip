@@ -1,0 +1,328 @@
+@import "tailwindcss" source(none);
+@import "../../node_modules/tw-animate-css/dist/tw-animate.css";
+@source ".";
+@source "./components";
+
+html:has(.day3-page),
+body:has(.day3-page) {
+  overflow-x: visible !important;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bodoni Moda", ui-serif, Georgia, serif;
+  --color-ink: var(--ink);
+  --color-sage: var(--sage);
+  --color-stone: var(--stone);
+  --color-bone: var(--bone);
+  --color-umber: var(--umber);
+  --color-teal-accent: oklch(0.62 0.09 200);
+  --color-ochre: oklch(0.72 0.13 75);
+  --color-coral: oklch(0.66 0.14 30);
+  --ease-premium: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0rem;
+  --ink: oklch(0.14 0.008 40);
+  --sage: oklch(0.63 0.012 155);
+  --stone: oklch(0.79 0.009 160);
+  --bone: oklch(0.99 0.003 90);
+  --umber: oklch(0.43 0.062 44);
+  --background: var(--ink);
+  --foreground: var(--bone);
+  --card: oklch(0.18 0.008 40);
+  --card-foreground: var(--bone);
+  --popover: oklch(0.18 0.008 40);
+  --popover-foreground: var(--bone);
+  --primary: var(--umber);
+  --primary-foreground: var(--bone);
+  --secondary: oklch(0.22 0.008 40);
+  --secondary-foreground: var(--bone);
+  --muted: oklch(0.22 0.008 40);
+  --muted-foreground: var(--sage);
+  --accent: var(--umber);
+  --accent-foreground: var(--bone);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: var(--bone);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: var(--umber);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  .day3-page * {
+    border-color: var(--color-border);
+  }
+
+  body:has(.day3-page) {
+    overflow-x: hidden !important;
+  }
+
+  .day3-page {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  .day3-page ::selection {
+    background: var(--umber);
+    color: var(--bone);
+  }
+
+  .day3-page::-webkit-scrollbar {
+    width: 6px;
+  }
+  .day3-page::-webkit-scrollbar-track {
+    background: var(--ink);
+  }
+  .day3-page::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--umber) 70%, transparent);
+  }
+}
+
+/* ---------- typographic utilities ---------- */
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: color-mix(in oklab, var(--sage) 90%, transparent);
+}
+
+@utility marginalia {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: color-mix(in oklab, var(--stone) 70%, transparent);
+}
+
+@utility display-bold {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.02em;
+  color: var(--bone);
+}
+
+@utility display-italic {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 0.95;
+  color: var(--bone);
+}
+
+@utility ghost-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.72;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in oklab, var(--sage) 45%, transparent);
+}
+
+@utility photo-frame {
+  background: var(--bone);
+  padding: 4px;
+  box-shadow:
+    0 30px 60px -20px oklch(0 0 0 / 0.85),
+    0 2px 8px oklch(0 0 0 / 0.5);
+  transition:
+    transform 450ms var(--ease-premium),
+    box-shadow 450ms var(--ease-premium),
+    filter 450ms var(--ease-premium);
+}
+
+@utility quiet-link {
+  position: relative;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--bone);
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 1px;
+    width: 100%;
+    background: var(--umber);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 260ms var(--ease-premium);
+  }
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@utility grain-layer {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  opacity: 0.045;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-shift 6s steps(6) infinite;
+}
+
+/* ---------- reveal system ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(var(--reveal-x, 0px), 22px, 0) rotate(var(--rot, 0deg));
+  transition:
+    opacity 600ms var(--ease-premium),
+    transform 600ms var(--ease-premium);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotate(var(--rot, 0deg));
+}
+
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-4%, 3%); }
+  50% { transform: translate(3%, -4%); }
+  75% { transform: translate(-2%, -2%); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--rot, 0deg)); }
+  50% { transform: translate3d(0, -10px, 0) rotate(calc(var(--rot, 0deg) + 0.6deg)); }
+}
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
+}
+
+.ambient-drift {
+  animation: drift 9s ease-in-out infinite;
+  animation-delay: var(--drift-delay, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ambient-drift,
+  .grain-layer { animation: none !important; }
+  .reveal {
+    transform: none !important;
+    transition: opacity 400ms linear;
+  }
+  .reveal.is-in { transform: none !important; }
+}
