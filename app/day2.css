@@ -155,7 +155,8 @@
 .day2-hero {
   position: relative;
   display: flex;
-  min-height: 1100px;
+  min-height: 980px;
+  padding-bottom: 100px;
   align-items: center;
   flex-direction: column;
   overflow: hidden;
@@ -348,12 +349,12 @@
 }
 
 .day2-features {
-  display: grid;
-  min-height: 668px;
-  padding: 260px 40px 50px;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 74px;
-  background: var(--day2-cream);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: auto;
+  padding: 20px 20px 25px;
+  background: #d8b48f;
 }
 
 .day2-feature {
@@ -364,8 +365,9 @@
 }
 
 .day2-feature img {
-  width: min(291px, 100%);
-  height: 236px;
+  width: min(420px, 90vw);
+  height: auto;
+  max-height: 380px;
   object-fit: contain;
   transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -955,7 +957,8 @@
   }
 
   .day2-hero {
-    min-height: 862px;
+    min-height: 750px;
+    padding-bottom: 60px;
   }
 
   .day2-hero__brand {
@@ -1015,15 +1018,16 @@
   }
 
   .day2-features {
-    min-height: 1082px;
-    padding: 200px 20px 34px;
+    min-height: auto;
+    padding: 15px 20px 20px;
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 15px;
   }
 
   .day2-feature img {
-    width: 165px;
-    height: 134px;
+    width: min(320px, 85vw);
+    height: auto;
+    max-height: 280px;
   }
 
   .day2-feature h2 {
@@ -1114,8 +1118,8 @@
   }
 
   .day2-services {
-    min-height: 944px;
-    padding: 210px 0 42px;
+    min-height: auto;
+    padding: 60px 0 15px;
   }
 
   .day2-services .day2-section-heading > span {
@@ -1463,8 +1467,8 @@
 .day2-services {
   position: relative;
   height: auto;
-  min-height: 1433px;
-  padding: 230px 40px 135px;
+  min-height: auto;
+  padding: 100px 40px 20px;
 }
 
 .day2-services .day2-section-heading {

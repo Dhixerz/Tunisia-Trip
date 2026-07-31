@@ -348,11 +348,11 @@
 }
 
 .day6-features {
-  display: grid;
-  min-height: 668px;
-  padding: 260px 40px 50px;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 74px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: auto;
+  padding: 80px 20px 40px;
   background: var(--day6-cream);
 }
 
@@ -364,8 +364,9 @@
 }
 
 .day6-feature img {
-  width: min(291px, 100%);
-  height: 236px;
+  width: min(420px, 90vw);
+  height: auto;
+  max-height: 380px;
   object-fit: contain;
   transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -1015,15 +1016,16 @@
   }
 
   .day6-features {
-    min-height: 1082px;
-    padding: 200px 20px 34px;
+    min-height: auto;
+    padding: 50px 20px 30px;
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 20px;
   }
 
   .day6-feature img {
-    width: 165px;
-    height: 134px;
+    width: min(320px, 85vw);
+    height: auto;
+    max-height: 280px;
   }
 
   .day6-feature h2 {

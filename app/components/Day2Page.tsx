@@ -9,19 +9,9 @@ import {
 
 const FEATURES = [
   {
-    image: "/day2/feature-fast.png",
-    title: "Fast and Reliable Delivery",
-    copy: "We move at the speed of creativity — and caffeine. Your deadlines won't even see us coming.",
-  },
-  {
-    image: "/day2/feature-price.png",
-    title: "Clear, No-Surprise Pricing",
-    copy: "No hidden fees, no sneaky charges — just clear, honest pricing and work that makes you wonder.",
-  },
-  {
-    image: "/day2/feature-roof.png",
-    title: "Everything, Under One Roof",
-    copy: "Design? Branding? Websites? TikTok dances? (Okay, maybe not that last one... yet.)",
+    image: "/day2/blobfish.png",
+    title: "bLObfISH Guy Came",
+    copy: "He is ugly and he dared to ask for your insta. The nerve.",
   },
 ];
 
@@ -530,50 +520,6 @@ export default function Day2Page() {
         ))}
       </section>
 
-      <section className="day2-statistics" ref={statsRef}>
-        <div className="day2-section-heading" data-day2-reveal>
-          <span>Brands</span>
-          <h2>
-            <SplitHeading>We built the rocket, they flew</SplitHeading>
-          </h2>
-        </div>
-
-        <div className="day2-brand-marquee" aria-label="Selected brands">
-          <div className="day2-brand-marquee__track">
-            {[...BRANDS, ...BRANDS].map(([name, image], index) => (
-              <div
-                className="day2-brand"
-                key={`${name}-${index}`}
-                style={{ "--day2-brand-index": index } as CSSProperties}
-              >
-                <span>{name}</span>
-                <img src={image} alt={name} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="day2-stats-grid" data-day2-reveal>
-          <article>
-            <CountUp target={40} suffix="+" play={statsStarted} />
-            <p>Brands launched</p>
-          </article>
-          <article>
-            <CountUp target={120} suffix="+" play={statsStarted} />
-            <p>Projects Delivered</p>
-          </article>
-          <article>
-            <CountUp target={300} suffix="+" play={statsStarted} />
-            <p>Moodboards created</p>
-          </article>
-          <article>
-            <CountUp target={98} suffix="%" play={statsStarted} />
-            <p>Happy clients</p>
-          </article>
-        </div>
-        <span className="day2-statistics__label">Numbers</span>
-      </section>
-
       <section className="day2-services" id="day2-services">
         <div className="day2-section-heading" data-day2-reveal>
           <span>YIPPIE</span>
@@ -656,34 +602,6 @@ export default function Day2Page() {
               </article>
             );
           })}
-        </div>
-      </section>
-
-      <section className="day2-benefits" id="day2-benefits">
-        <div className="day2-section-heading day2-section-heading--dark" data-day2-reveal>
-          <span>Benefitsss</span>
-          <h2>
-            <SplitHeading>Why we are</SplitHeading>
-            <br />
-            <SplitHeading>the best!</SplitHeading>
-          </h2>
-        </div>
-
-        <div className="day2-benefits__grid">
-          {BENEFITS.map((benefit, index) => (
-            <article
-              className={`day2-benefit day2-benefit--${benefit.tone} day2-benefit--${index + 1}`}
-              data-day2-reveal
-              key={benefit.title}
-              style={{ "--day2-delay": index % 3 } as CSSProperties}
-            >
-              <img src={benefit.image} alt="" />
-              <div>
-                <h3>{benefit.title}</h3>
-                <p>{benefit.copy}</p>
-              </div>
-            </article>
-          ))}
         </div>
       </section>
     </main>
