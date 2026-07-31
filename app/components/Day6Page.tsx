@@ -529,7 +529,7 @@ export default function day6Page() {
 
                   <div className="day6-service-gallery">
                     <div className="day6-service-gallery__track">
-                      {[...item.images, ...item.images].map((image, imageIndex) => (
+                      {[...item.images, ...item.images, ...item.images, ...item.images].map((image, imageIndex) => (
                         <img src={image} alt="" key={`${image}-${imageIndex}`} />
                       ))}
                     </div>

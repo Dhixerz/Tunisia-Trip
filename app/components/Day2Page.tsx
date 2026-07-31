@@ -34,6 +34,72 @@ const BRANDS = [
   ["Unilever", "/day2/brand-unilever.png"],
 ];
 
+function ServiceMedia({
+  src,
+  isOpen,
+  muted = false,
+}: {
+  src: string;
+  isOpen: boolean;
+  muted?: boolean;
+}) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = muted;
+
+    if (isOpen) {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    } else {
+      video.pause();
+      video.currentTime = 0;
+    }
+  }, [isOpen, muted]);
+
+  if (src.endsWith(".mp4") || src.endsWith(".webm")) {
+    return (
+      <video
+        ref={videoRef}
+        src={src}
+        autoPlay
+        loop
+        muted={muted}
+        playsInline
+        className="day2-service-media pointer-events-none"
+        style={{
+          width: "280px",
+          height: "178px",
+          borderRadius: "28px",
+          objectFit: "cover",
+          flexShrink: 0,
+          pointerEvents: "none",
+        }}
+      />
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt=""
+      className="day2-service-media"
+      style={{
+        width: "280px",
+        height: "178px",
+        borderRadius: "28px",
+        objectFit: "cover",
+        flexShrink: 0,
+      }}
+    />
+  );
+}
+
 const SERVICES = [
   {
     title: "Foodieee",
@@ -55,25 +121,20 @@ const SERVICES = [
     ],
   },
   {
-    title: "Web Design and Development",
-    tagline: "Pretty and powerful websites that actually work.",
+    title: "Rita!",
+    tagline: "'LOOK WHAT RITA DID' - Arina",
     tags: [
-      "UI UX Design",
-      "Custom Web Development",
-      "Responsive Design",
-      "Website Maintenance",
-      "Landing Page Design",
-      "Webflow Development",
-      "Framer Development",
-      "Iconography",
-      "App UI Design",
+      "Indian",
+      "Mehndi",
+      "Rita Becoming Indian",
+      "India",
+      "Taj Mahal Tattoo",
     ],
-    copy: "We turn strategy into responsive digital experiences with expressive motion, clear navigation, and fast, reliable implementation.",
+    copy: "With her hand tattoo, Rita is leaning towards ur cherished kinds of people babe, Indian!",
     images: [
-      "/day2/service-web-1.gif",
-      "/day2/service-web-2.gif",
-      "/day2/service-web-3.jpg",
-      "/day2/service-web-4.png",
+      "/day2/rita-video.mp4",
+      "/day2/rita-1.png",
+      "/day2/rita-2.png",
     ],
   },
   {
@@ -527,7 +588,12 @@ export default function Day2Page() {
                   <div className="day2-service-gallery">
                     <div className="day2-service-gallery__track">
                       {[...item.images, ...item.images].map((image, imageIndex) => (
-                        <img src={image} alt="" key={`${image}-${imageIndex}`} />
+                        <ServiceMedia
+                          src={image}
+                          isOpen={isOpen}
+                          muted={imageIndex !== 0}
+                          key={`${image}-${imageIndex}`}
+                        />
                       ))}
                     </div>
                   </div>
