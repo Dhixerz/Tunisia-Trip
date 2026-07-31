@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
-import { days } from "./diary-data";
 import { useScrollProgress } from "./primitives";
 
 export function scrollToDay(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
+
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Day-1", href: "/day1" },
+  { label: "Day-2", href: "/day2" },
+  { label: "Day-3", href: "/day3" },
+  { label: "Works", href: "/works" },
+];
 
 export function Chrome() {
   const progress = useScrollProgress();
@@ -36,7 +43,7 @@ export function Chrome() {
           A.T. — Tunisia ’26
         </button>
         <button
-          aria-label={open ? "Close day index" : "Open day index"}
+          aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
           className="flex h-6 w-[22px] shrink-0 flex-col justify-center gap-[5px]"
         >
@@ -66,41 +73,30 @@ export function Chrome() {
         style={{ transitionTimingFunction: "cubic-bezier(0.4,0,0.2,1)" }}
         aria-hidden={!open}
       >
-        <ul className="flex h-full flex-col justify-center gap-1 px-6 pt-16 md:px-16">
-          {days.map((d, i) => (
+        <ul className="flex h-full flex-col justify-center gap-2 px-8 max-w-3xl mx-auto md:px-16">
+          {navItems.map((item, i) => (
             <li
-              key={d.id}
+              key={item.label}
               className="transition-all duration-500"
               style={{
-                transitionDelay: open ? `${i * 35}ms` : "0ms",
+                transitionDelay: open ? `${i * 40}ms` : "0ms",
                 opacity: open ? 1 : 0,
                 transform: open ? "translateY(0)" : "translateY(14px)",
                 transitionTimingFunction: "cubic-bezier(0.4,0,0.2,1)",
               }}
             >
-              <button
-                onClick={() => {
-                  setOpen(false);
-                  setTimeout(() => scrollToDay(d.id), 120);
-                }}
-                className="group grid w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 border-b border-bone/10 py-3 text-left md:gap-8"
+              <a
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="group flex items-center justify-between border-b border-bone/10 py-4 text-left"
               >
-                <span className="display-bold text-[clamp(2rem,6vw,4.5rem)] text-bone/80 transition-colors group-hover:text-bone">
-                  {d.n}
+                <span className="display-bold text-[clamp(2.2rem,5.5vw,4.2rem)] text-bone/80 transition-colors group-hover:text-bone">
+                  {item.label}
                 </span>
-                <span className="min-w-0">
-                  <span className="display-italic block truncate text-[clamp(1.1rem,3vw,2rem)]">
-                    {d.title}
-                  </span>
-                  <span className="eyebrow mt-1 block truncate">{d.place}</span>
+                <span className="text-bone/40 text-xl font-light transition-all group-hover:translate-x-2 group-hover:text-bone">
+                  →
                 </span>
-                <img
-                  src={d.cover}
-                  alt=""
-                  loading="lazy"
-                  className="h-14 w-20 shrink-0 object-cover opacity-40 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 md:h-20 md:w-32"
-                />
-              </button>
+              </a>
             </li>
           ))}
         </ul>
