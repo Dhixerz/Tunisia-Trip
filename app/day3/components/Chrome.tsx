@@ -51,7 +51,7 @@ export function Chrome({ theme = "dark" }: ChromeProps) {
             isLight ? "text-ink" : "text-bone"
           }`}
         >
-          A.T. — Tunisia ’26
+          TUNI TUNI
         </button>
         <button
           aria-label={open ? "Close menu" : "Open menu"}

@@ -2,14 +2,8 @@
 
 import { Chrome } from "./components/Chrome";
 import { Hero } from "./components/Hero";
-import { DayOne, DayTwo, DayThree, DayFour } from "./components/DaysEarly";
-import {
-  DayFive,
-  DaySix,
-  DaySeven,
-  Reflections,
-  Closing,
-} from "./components/DaysLate";
+import { DayOne, DayTwo } from "./components/DaysEarly";
+import { DaySix } from "./components/DaysLate";
 
 export default function Day3Page() {
   return (
@@ -18,13 +12,7 @@ export default function Day3Page() {
       <Hero />
       <DayOne />
       <DayTwo />
-      <DayThree />
-      <DayFour />
-      <DayFive />
       <DaySix />
-      <DaySeven />
-      <Reflections />
-      <Closing />
     </main>
   );
 }

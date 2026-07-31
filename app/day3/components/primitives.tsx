@@ -37,7 +37,7 @@ export function useScrollProgress() {
   return p;
 }
 
-export function useParallax(speed = 0.15) {
+export function useParallax(speed = 0.05) {
   const ref = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -58,45 +58,9 @@ export function useParallax(speed = 0.15) {
   return ref;
 }
 
-/* --- ambient "voice memo" tone: a soft breathy hum, synthesised --- */
-let ctx: AudioContext | null = null;
+/* --- ambient "voice memo" tone: disabled --- */
 function whisper(seed: number) {
-  if (typeof window === "undefined") return () => {};
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return () => {};
-  try {
-    ctx ??= new (window.AudioContext ||
-      (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
-    const c = ctx;
-    if (c.state === "suspended") void c.resume();
-    const gain = c.createGain();
-    gain.gain.setValueAtTime(0.0001, c.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.055, c.currentTime + 0.35);
-    const filter = c.createBiquadFilter();
-    filter.type = "bandpass";
-    filter.frequency.value = 420 + (seed % 5) * 70;
-    filter.Q.value = 2.2;
-    const osc = c.createOscillator();
-    osc.type = "triangle";
-    osc.frequency.value = 104 + (seed % 7) * 9;
-    const lfo = c.createOscillator();
-    lfo.frequency.value = 4.5;
-    const lfoGain = c.createGain();
-    lfoGain.gain.value = 12;
-    lfo.connect(lfoGain).connect(osc.frequency);
-    osc.connect(filter).connect(gain).connect(c.destination);
-    osc.start();
-    lfo.start();
-    return () => {
-      gain.gain.cancelScheduledValues(c.currentTime);
-      gain.gain.setTargetAtTime(0.0001, c.currentTime, 0.12);
-      setTimeout(() => {
-        osc.stop();
-        lfo.stop();
-      }, 450);
-    };
-  } catch {
-    return () => {};
-  }
+  return () => {};
 }
 
 export function Waveform({ active }: { active: boolean }) {
@@ -130,6 +94,7 @@ type PolaroidProps = {
   delay?: number;
   drift?: boolean;
   seed?: number;
+  noAudioBadge?: boolean;
   style?: React.CSSProperties;
 };
 
@@ -148,21 +113,9 @@ export function Polaroid({
   style,
 }: PolaroidProps) {
   const [on, setOn] = useState(false);
-  const stopRef = useRef<(() => void) | null>(null);
 
-  useEffect(() => () => stopRef.current?.(), []);
-
-  const start = () => {
-    if (!memo || on) return;
-    setOn(true);
-    stopRef.current = whisper(seed);
-  };
-  const stop = () => {
-    if (!on) return;
-    setOn(false);
-    stopRef.current?.();
-    stopRef.current = null;
-  };
+  const start = () => setOn(true);
+  const stop = () => setOn(false);
 
   return (
     <figure
@@ -193,27 +146,20 @@ export function Polaroid({
           src={src}
           alt={alt}
           loading="lazy"
-          className={`block w-full object-cover transition-[filter,opacity] duration-500 ${
-            memo ? "opacity-85 group-hover:opacity-100" : ""
-          } ${imgClassName}`}
+          className={`block w-full object-cover transition-[filter,opacity] duration-500 ${memo ? "opacity-85 group-hover:opacity-100" : ""
+            } ${imgClassName}`}
         />
-        {memo ? (
-          <span className="pointer-events-none absolute bottom-3 right-3 flex items-center gap-2 bg-ink/70 px-2 py-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus:opacity-100">
-            <Waveform active={on} />
-            {time ? <span className="eyebrow text-[8px]">{time}</span> : null}
-          </span>
-        ) : null}
       </div>
 
       {memo ? (
         <figcaption
-          className="marginalia pointer-events-none absolute left-1 top-full mt-3 max-w-[22ch] opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus:opacity-100"
+          className="marginalia pointer-events-none relative mt-3 block max-w-[26ch] text-stone/90 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus:opacity-100"
           style={{ transitionDelay: "100ms" }}
         >
           “{memo}”
         </figcaption>
       ) : caption ? (
-        <figcaption className="marginalia mt-3">{caption}</figcaption>
+        <figcaption className="marginalia mt-3 text-stone/90">{caption}</figcaption>
       ) : null}
     </figure>
   );

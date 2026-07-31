@@ -22,11 +22,8 @@ export function Hero() {
           }}
         />
 
-        <span className="marginalia absolute left-6 top-1/2 hidden -translate-y-1/2 -rotate-90 whitespace-nowrap text-[10px] md:block">
-          seven days of warm light, kept for you
-        </span>
         <span className="marginalia absolute right-6 top-24 max-w-[18ch] text-right text-[12px] md:right-10">
-          for Arina — press nothing, just wander
+          presented for you, my love
         </span>
         <span
           className="marginalia absolute right-3 top-1/2 hidden rotate-90 whitespace-nowrap text-[8px] md:block"
@@ -43,7 +40,7 @@ export function Hero() {
             </sup>
           </h1>
           <p className="display-italic mt-4 max-w-[18ch] text-[clamp(1.8rem,6vw,6rem)] text-stone">
-            a week you kept in your pockets
+            more funsies on this day
           </p>
         </div>
       </div>
@@ -57,6 +54,38 @@ function FilmStrip() {
   const ref = useRef<HTMLDivElement | null>(null);
   const bgRef = useRef<HTMLDivElement | null>(null);
   const [near, setNear] = useState<number | null>(null);
+  const [playingId, setPlayingId] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  const handleCardClick = (d: (typeof days)[0]) => {
+    if (playingId === d.id) {
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      setPlayingId(null);
+      return;
+    }
+
+    if (d.audio) {
+      if (!audioRef.current) {
+        audioRef.current = new Audio(d.audio);
+      } else {
+        audioRef.current.pause();
+        audioRef.current.src = d.audio;
+      }
+      audioRef.current.play().catch(() => {});
+      setPlayingId(d.id);
+    }
+  };
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -93,12 +122,14 @@ function FilmStrip() {
         onMouseLeave={() => setNear(null)}
       >
         {days.map((d, i) => {
-          const active = near === i;
+          const active = near === i || playingId === d.id;
+          const isPlaying = playingId === d.id;
           return (
             <button
               key={d.id}
+              type="button"
               onMouseEnter={() => setNear(i)}
-              onClick={() => scrollToDay(d.id)}
+              onClick={() => handleCardClick(d)}
               className="group relative min-w-[42vw] flex-1 overflow-hidden border border-bone/10 bg-bone/5 p-3 text-left backdrop-blur-md transition-[transform,box-shadow] duration-[420ms] sm:min-w-0"
               style={{
                 transform: active ? "scale(1.02)" : "scale(1)",
@@ -119,7 +150,7 @@ function FilmStrip() {
               </div>
               <div className="mt-3 flex items-end justify-between gap-2">
                 <span className="display-bold text-3xl">{d.n}</span>
-                <span className="opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span className={`transition-opacity duration-300 ${isPlaying ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}>
                   <Waveform active={active} />
                 </span>
               </div>

@@ -1,7 +1,8 @@
 const hero = "/day3/hero.jpg";
-const day1a = "/day3/day1a.jpg";
-const day1b = "/day3/day1b.jpg";
-const day2a = "/day3/day2a.jpg";
+const plane = "/day3/plane.avif";
+const outfit = "/day3/outfit.jpg";
+const mosque = "/day3/mosque.jpg";
+const day2a = "/day3/day2a.avif";
 const day2b = "/day3/day2b.jpg";
 const day3a = "/day3/day3a.jpg";
 const day4a = "/day3/day4a.jpg";
@@ -11,8 +12,11 @@ const day7a = "/day3/day7a.jpg";
 
 export const photos = {
   hero,
-  day1a,
-  day1b,
+  plane,
+  outfit,
+  mosque,
+  day1a: outfit,
+  day1b: mosque,
   day2a,
   day2b,
   day3a,
@@ -30,71 +34,79 @@ export type DayMeta = {
   tagline: string;
   place: string;
   cover: string;
+  audio?: string;
 };
 
 export const days: DayMeta[] = [
   {
     n: "01",
     id: "day-01",
-    theme: "Arrival",
+    theme: "Press Me!",
     title: "Arrival",
     tagline: "the light was already waiting",
     place: "Tunis — Carthage",
-    cover: day1a,
+    cover: plane,
+    audio: "/day3/audio/day1.mp3",
   },
   {
     n: "02",
     id: "day-02",
-    theme: "Souk",
+    theme: "Press Me!",
     title: "Souk",
     tagline: "a hundred colours, one hand in mine",
     place: "Medina of Tunis",
     cover: day2a,
+    audio: "/day3/audio/day2.mp3",
   },
   {
     n: "03",
     id: "day-03",
-    theme: "Blue Hour",
+    theme: "Press Me!",
     title: "Blue",
     tagline: "mint, salt, and a very slow afternoon",
     place: "Sidi Bou Saïd",
     cover: day3a,
+    audio: "/day3/audio/day3.mp3",
   },
   {
     n: "04",
     id: "day-04",
-    theme: "Stone",
+    theme: "Press Me!",
     title: "Stone",
     tagline: "older than every word for love",
     place: "Dougga",
     cover: day4a,
+    audio: "/day3/audio/day4.mp3",
   },
   {
     n: "05",
     id: "day-05",
-    theme: "Dunes",
+    theme: "Press Me!",
     title: "Sahara",
     tagline: "nothing for miles, everything at once",
     place: "Douz — Grand Erg",
     cover: day5a,
+    audio: "/day3/audio/day5.mp3",
   },
   {
     n: "06",
     id: "day-06",
-    theme: "Night",
+    theme: "Press Me!",
     title: "Fire",
     tagline: "you counted stars until you fell asleep",
     place: "Camp, 33.4°N",
     cover: day6a,
+    audio: "/day3/audio/day6.mp3",
   },
   {
     n: "07",
     id: "day-07",
-    theme: "Farewell",
+    theme: "Press Me!",
     title: "Home",
     tagline: "we brought the warmth back with us",
     place: "TUN → home",
     cover: day7a,
+    audio: "/day3/audio/day7.mp3",
   },
 ];
 

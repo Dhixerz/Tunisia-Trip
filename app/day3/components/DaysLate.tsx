@@ -4,12 +4,11 @@ import { photos, reflections } from "./diary-data";
 import { Eyebrow, Polaroid, Section } from "./primitives";
 
 export function DayFive() {
-  const isMobile = useIsMobile();
   const orbit = [
-    { src: photos.day5a, rot: -8, left: "2%", top: "2%", w: "26%" },
-    { src: photos.day4a, rot: 6, left: "66%", top: "6%", w: "23%" },
-    { src: photos.day6a, rot: -4, left: "10%", top: "56%", w: "25%" },
-    { src: photos.day2b, rot: 9, left: "72%", top: "50%", w: "18%" },
+    { src: photos.day5a, rot: -3 },
+    { src: photos.day4a, rot: 4 },
+    { src: photos.day6a, rot: -2 },
+    { src: photos.day2b, rot: 3 },
   ];
   const memos = [
     "The dunes hum. Actually hum, I'm not being poetic.",
@@ -19,28 +18,26 @@ export function DayFive() {
   ];
 
   return (
-    <Section id="day-05" className="px-6 py-[clamp(90px,14vh,180px)] md:px-10">
-      <Eyebrow n="05" theme="Dunes" className="reveal" />
-      <div className="relative mx-auto mt-10 grid w-full max-w-[1500px] grid-cols-2 gap-8 md:block md:min-h-[92svh]">
-        <h2 className="display-italic pointer-events-none col-span-2 order-2 text-center text-[clamp(3.5rem,16vw,15rem)] md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:whitespace-nowrap">
+    <Section id="day-05" className="px-6 py-16 md:px-10 md:py-24">
+      <div className="relative mb-12 text-center">
+        <Eyebrow n="05" theme="Dunes" className="reveal block mb-3" />
+        <h2 className="reveal display-italic text-[clamp(3.5rem,10vw,9rem)]">
           Sahara
         </h2>
+      </div>
+
+      <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
         {orbit.map((o, i) => (
           <Polaroid
             key={i}
             src={o.src}
-            alt="Scattered photograph from the desert day"
+            alt="Photograph from the desert day"
             rot={o.rot}
             seed={i + 31}
             drift
             delay={i * 80}
             memo={memos[i]}
-            time={`${17 + i}:0${i}`}
-            style={
-              isMobile
-                ? undefined
-                : { position: "absolute", left: o.left, top: o.top, width: o.w }
-            }
+            className="w-full"
           />
         ))}
       </div>
@@ -52,56 +49,23 @@ export function DayFive() {
 }
 
 export function DaySix() {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [p, setP] = useState(0);
-  useEffect(() => {
-    const onScroll = () => {
-      const el = ref.current;
-      if (!el) return;
-      const r = el.getBoundingClientRect();
-      const v = 1 - (r.top + r.height * 0.35) / window.innerHeight;
-      setP(Math.min(Math.max(v, 0), 1));
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <Section id="day-06" className="relative">
-      <div ref={ref} className="relative w-full overflow-hidden" style={{ height: "130vh" }}>
-        <div className="sticky top-0 w-full overflow-hidden" style={{ height: "100vh" }}>
-          <img
-            src={photos.day6a}
-            alt="Campfire under a desert sky full of stars"
-            loading="lazy"
-            className="h-full w-full object-cover"
-            style={{ transform: `scale(${1 + p * 0.06})`, transition: "transform 200ms linear" }}
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/60" />
-          <div className="absolute inset-x-6 bottom-[14vh] md:inset-x-10">
-          <Eyebrow n="06" theme="Night" />
-          <h2
-            className="display-bold mt-3 text-[clamp(3.5rem,12vw,10rem)]"
-            style={{
-              clipPath: `inset(0 ${100 - p * 100}% 0 0)`,
-              transition: "clip-path 600ms cubic-bezier(0.4,0,0.2,1)",
-            }}
-          >
-            Fire
-          </h2>
-          <p
-            className="display-italic mt-4 max-w-[20ch] text-[clamp(1.3rem,3.4vw,3rem)] text-stone"
-            style={{
-              opacity: p > 0.35 ? 1 : 0,
-              transform: `translateY(${p > 0.35 ? 0 : 18}px)`,
-              transition: "all 600ms cubic-bezier(0.4,0,0.2,1) 100ms",
-            }}
-          >
-            you counted stars until you fell asleep
-          </p>
-          </div>
-        </div>
+    <Section id="day-06" className="relative min-h-[100svh] w-full overflow-hidden">
+      <img
+        src="/day3/orange-cat.jpg"
+        alt="Orange Cat - Trumpie following you"
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/60" />
+      <div className="relative flex min-h-[100svh] flex-col justify-end px-6 pb-[12vh] pt-20 md:px-10">
+        <span className="eyebrow reveal block">My Fav Picie of the Day</span>
+        <h2 className="reveal display-bold mt-3 text-[clamp(3.5rem,12vw,10rem)]">
+          Orange Cat
+        </h2>
+        <p className="display-italic reveal mt-4 max-w-[28ch] text-[clamp(1.3rem,3.4vw,3rem)] text-stone">
+          Trumpie is following you everywhere babe, I love you.
+        </p>
       </div>
     </Section>
   );
@@ -119,7 +83,6 @@ export function DaySeven() {
             rot={-3}
             seed={41}
             memo="Taking one flower home. It'll survive the flight, probably."
-            time="09:12"
           />
         </div>
         <div className="md:col-span-5">
