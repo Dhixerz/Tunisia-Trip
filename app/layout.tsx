@@ -8,6 +8,7 @@ import "./motto-mobile.css";
 import "./motto-mobile-spacing.css";
 import "./gallery-seven.css";
 import "./menu-navigation-fix.css";
+import "./day2.css";
 
 const siteTitle = "TUNI — Multidisciplinary Creative Studio";
 const siteDescription =

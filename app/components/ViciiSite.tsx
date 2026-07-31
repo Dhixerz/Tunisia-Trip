@@ -292,6 +292,7 @@ function SiteHeader({ tone = "light" }: { tone?: "light" | "dark" }) {
           {[
             ["Home", "/"],
             ["Day-1", "/day1"],
+            ["Day-2", "/day2"],
             ["Works", "/works"],
             ["Services", "/#services"],
             ["Contact", "/#contact"],
@@ -336,6 +337,7 @@ function Footer() {
         <nav aria-label="Footer navigation">
           <a href="/">Home</a>
           <a href="/day1">Day-1</a>
+          <a href="/day2">Day-2</a>
           <a href="/works">Works</a>
           <a href="/#services">Services</a>
           <a href="/#contact">Contact</a>
