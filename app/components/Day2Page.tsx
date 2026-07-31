@@ -99,6 +99,47 @@ function ServiceMedia({
   );
 }
 
+function CardAudioPlayer({
+  audios,
+  isOpen,
+}: {
+  audios?: string[];
+  isOpen: boolean;
+}) {
+  const [currentAudioIndex, setCurrentAudioIndex] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (!audios || audios.length === 0) return;
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isOpen) {
+      audio.src = audios[currentAudioIndex];
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    } else {
+      audio.pause();
+      audio.currentTime = 0;
+      setCurrentAudioIndex(0);
+    }
+  }, [isOpen, currentAudioIndex, audios]);
+
+  if (!audios || audios.length === 0) return null;
+
+  return (
+    <audio
+      ref={audioRef}
+      onEnded={() => {
+        setCurrentAudioIndex((prevIndex) => (prevIndex + 1) % audios.length);
+      }}
+      preload="auto"
+    />
+  );
+}
+
 const SERVICES = [
   {
     title: "Foodieee",
@@ -155,25 +196,24 @@ const SERVICES = [
     muteAllVideos: true,
   },
   {
-    title: "Digital Marketing",
-    tagline: "Get seen. Get clicks. Get results.",
+    title: "Muslim Prayer",
+    tagline: "Brace for Muslim Sounds",
     tags: [
-      "Social Media Marketing",
-      "SEO & SEM",
-      "Email Campaigns",
-      "Paid Ads",
-      "Influencer Marketing",
-      "Social Media Ads",
-      "Blog Strategy",
-      "Analytics & Reporting",
-      "Email Automation",
+      "Muslim",
+      "Tunisia",
+      "Muslim Country",
+      "Prayer",
+      "Sujood",
     ],
-    copy: "Creative ideas meet practical data so every campaign lands in the right place, with the right audience, at the right time.",
+    copy: "BABY! You finally heard what I hear everyday in Indo YAYYY.",
     images: [
-      "/day2/service-web-4.png",
-      "/day2/service-brand-2.jpg",
-      "/day2/service-web-1.gif",
-      "/day2/service-brand-3.jpg",
+      "/day2/muslim-1.jpg",
+      "/day2/muslim-2.jpg",
+      "/day2/muslim-3.jpg",
+    ],
+    audios: [
+      "/day2/muslim-audio-1.mp3",
+      "/day2/muslim-audio-2.m4a",
     ],
   },
 ];
@@ -536,9 +576,9 @@ export default function Day2Page() {
 
       <section className="day2-services" id="day2-services">
         <div className="day2-section-heading" data-day2-reveal>
-          <span>Services</span>
+          <span>YIPPIE</span>
           <h2>
-            <SplitHeading>What we do (and do really well)</SplitHeading>
+            <SplitHeading>The Highlights</SplitHeading>
           </h2>
         </div>
 
@@ -571,6 +611,7 @@ export default function Day2Page() {
                   id={`day2-service-${index}`}
                   aria-hidden={!isOpen}
                 >
+                  <CardAudioPlayer audios={item.audios} isOpen={isOpen} />
                   <div className="day2-service-card__details">
                     <div className="day2-service-tags">
                       {item.tags.map((tag) => (

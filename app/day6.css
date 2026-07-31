@@ -1494,7 +1494,7 @@
 .day6-services__accordion {
   display: flex;
   width: 100%;
-  margin-top: -110px;
+  margin-top: 50px;
   flex-direction: column;
   gap: 12px;
 }
