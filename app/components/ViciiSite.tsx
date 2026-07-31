@@ -53,7 +53,7 @@ const A = {
   masonryI: "/assets/d966272d7fa9a449.avif",
 } as const;
 
-type ProjectKey = "nora" | "aykuna" | "dlavigne";
+type ProjectKey = "nora" | "aykuna" | "dlavigne" | "aykuna2";
 
 type Project = {
   key: ProjectKey;
@@ -73,21 +73,22 @@ type Project = {
   outcomeTitle: string;
   outcome: string[];
   storyImages: [string, string, string];
+  audio?: string;
 };
 
 export const PROJECTS: Record<ProjectKey, Project> = {
   nora: {
     key: "nora",
     href: "/works/arcworks-collective",
-    name: "N Ø R A",
-    compactName: "NØRA",
-    image: A.nora,
-    alt: "NORA",
-    year: "2025",
+    name: "Beach Day",
+    compactName: "Beach Day",
+    image: "/assets/beach-day.png",
+    alt: "Beach Day",
+    year: "2026",
     duration: "8 Months",
-    service: "Brand Design & Product Development",
+    service: "In my eyes, your beauty is undefeatable.",
     description:
-      "This project focuses on brand awareness, and product designs development for a holistic sleeping brand blending rituals with a modern twist for a dreamy ambiance. NØRA is more than just a brand; it is an invitation to transform the act of sleeping into a sacred and beautiful ritual, providing our customers with the tools to achieve ultimate rest and rejuvenation.",
+      "AWWW HOW CUTE TO SEE YOU RELAX ON THE BEACH WITH RITA!! You, Rita, and your mommy are all the prettiest women alive on earth ^^",
     introTitle: "Introduction",
     intro: [
       "NØRA, a new holistic wellness brand, came to TUNI Studio with a clear vision: to create an identity that would elevate the act of sleep into a mindful ritual. They needed more than just a brand, they wanted an entire world built on tranquility and sensory experience.",
@@ -114,15 +115,15 @@ export const PROJECTS: Record<ProjectKey, Project> = {
   aykuna: {
     key: "aykuna",
     href: "/works/studio-nive",
-    name: "A Y K U N A",
-    compactName: "AYKUNA",
-    image: A.aykuna,
-    alt: "Dynamic Fashion Portrait",
-    year: "2025",
+    name: "Blue Jellyfish",
+    compactName: "Blue Jellyfish",
+    image: "/assets/blue-jellyfish.png",
+    alt: "Blue Jellyfish",
+    year: "2026",
     duration: "6 Months",
-    service: "Fashion brand",
+    service: "I still think Jellyfish sting people.",
     description:
-      "Branding and product design for an ultra-luxury fashion brand that blends art, craftmanship, and storytelling.",
+      "The Jellyfish must have been a cool creature! It's blue too, we both love bluewy. And you said it looks like plastic, so there you go a Korean <3",
     introTitle: "Introduction",
     intro: [
       "Aykuna approached Vicii Studio seeking a refreshed digital presence that matched their grand vision as an ultra-luxury fashion brand based on a story of warrior-queens that earnt themselves the place to be on top. They needed more than just a mere branding they wanted to establish an institution, a story full of tradition that gives a deep and unforgettable impression especially to those who adores the haute-couture world of fashion.",
@@ -150,15 +151,15 @@ export const PROJECTS: Record<ProjectKey, Project> = {
   dlavigne: {
     key: "dlavigne",
     href: "/works/d-lavigne",
-    name: "D ’ L A V I G N E",
-    compactName: "D’LAVIGNE",
-    image: A.dlavigne,
-    alt: "Modern Black Chair",
-    year: "2025",
+    name: "Cheater",
+    compactName: "Cheater",
+    image: "/assets/cheater.png",
+    alt: "Cheater",
+    year: "2026",
     duration: "On Going",
-    service: "Brand Design & Product Development",
+    service: "Just No.",
     description:
-      "Brand development and product strategy for renowned Paris’s art studio, translating their unique artistic style into luxury fashion brand collaborations and art exhibitions",
+      "Typical Muslim guy. I don't even know how to describe this. You already know by looking at the illustration. Imagine holding that dirty hands and got pregnant by it too.",
     introTitle: "Introduction",
     intro: [
       "D'Lavigne, a renowned Paris’s art studio celebrated for their collaborations with luxury brands, approached TUNI Studio with a desire to redefine their digital presence. D’Lavigne goal was to create a platform that not only showcased their impressive body of work but also captured the unique essence of their artistic vision. D’Lavigne needed more than a standard portfolio; they wanted a curated online experience that conveyed the elegance and narrative of their art.",
@@ -181,12 +182,44 @@ export const PROJECTS: Record<ProjectKey, Project> = {
       "/assets/05748fa1b2376422.avif",
     ],
   },
+  aykuna2: {
+    key: "aykuna2" as ProjectKey,
+    href: "/works/studio-nive",
+    name: "The Internet",
+    compactName: "The Internet",
+    image: "/assets/no-wifi.jpg",
+    alt: "The Internet",
+    year: "2026",
+    duration: "6 Months",
+    service: "Internet Crash Out",
+    description:
+      "The only set back there was the internet :( Floppie Tuni Tuni digital world.",
+    audio: "/assets/internet-crashout.mp3",
+    introTitle: "Introduction",
+    intro: [
+      "Aykuna approached Vicii Studio seeking a refreshed digital presence that matched their grand vision as an ultra-luxury fashion brand based on a story of warrior-queens that earnt themselves the place to be on top.",
+    ],
+    solutionTitle: "Establishing a Brand Image",
+    solution: [
+      "We developed a core brand narrative for AYKUNA centered on the “Sovereign Queen.” This informed every aspect of the project.",
+    ],
+    outcomeTitle: "The Results",
+    outcome: [
+      "Through our strategic and creative partnership, we equipped AYKUNA with a powerful, multi faceted brand toolkit.",
+    ],
+    storyImages: [
+      "/assets/dda16bde983fabbe.avif",
+      "/assets/aykuna-brand.png",
+      "/assets/aykuna-outcome.png",
+    ],
+  },
 };
 
 const projectList = [
   PROJECTS.nora,
   PROJECTS.aykuna,
   PROJECTS.dlavigne,
+  PROJECTS.aykuna2,
 ];
 
 function useMotionRuntime() {
@@ -409,17 +442,10 @@ function ContactSection() {
   );
 }
 
-function ProjectCard({
-  project,
-  index,
-}: {
-  project: Project;
-  index: number;
-}) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <a
+    <div
       className={`project-card ${index % 2 ? "project-card--reverse" : ""}`}
-      href={project.href}
       data-reveal
     >
       <div className="project-card__media">
@@ -430,8 +456,13 @@ function ProjectCard({
         <h3>{project.compactName}</h3>
         <p>{project.description}</p>
         <em>{project.service}</em>
+        {project.audio ? (
+          <div className="mt-6">
+            <audio controls src={project.audio} className="w-full max-w-sm rounded-full accent-umber" />
+          </div>
+        ) : null}
       </div>
-    </a>
+    </div>
   );
 }
 
@@ -609,18 +640,16 @@ function EditorialHero({
           </>
         ) : (
           <>
-            A curated collection of
+            Мы любим Тунис
             <br />
-            our <em>boldest</em> and most
-            <br />
-            <em>impactful</em> projects.
+            Пляжи и бассейны обязательны.
           </>
         )}
       </h1>
       <p data-reveal>
         {about
           ? "From Russia to Tunisia - It was Saturday Night (25/07/26). Arina and famie boarded the plane at 7 PM to arrive at the city of Africans, Sousse."
-          : "Every project is rooted in strategy, built with intention, and crafted to help our clients grow, connect with their audience, and stand out in a crowded market."}
+          : "You enjoyed your time at the beach swimming on this day! YAYYYY."}
       </p>
     </section>
   );
@@ -730,7 +759,6 @@ export function AboutPage() {
         </section>
         <ExperienceScene />
         <MasonryGallery />
-        <ContactSection />
       </main>
       <Footer />
     </div>
