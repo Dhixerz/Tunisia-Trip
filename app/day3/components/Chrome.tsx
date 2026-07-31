@@ -12,6 +12,7 @@ const navItems = [
   { label: "Day-3", href: "/day3" },
   { label: "Day-4", href: "/day4" },
   { label: "Day-5", href: "/day5" },
+  { label: "Day-6", href: "/day6" },
 ];
 
 type ChromeProps = {
