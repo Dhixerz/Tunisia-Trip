@@ -36,25 +36,22 @@ const BRANDS = [
 
 const SERVICES = [
   {
-    title: "Branding & Identity",
-    tagline: "Make your mark—boldly and beautifully.",
+    title: "Foodieee",
+    tagline: "Breakie and Lunchie!",
     tags: [
-      "Logo Design",
-      "Brand Strategy",
-      "Visual Identity",
-      "Brand Guidelines",
-      "Content Marketing",
-      "Digital Ads / Banners",
-      "Social Media Graphics",
-      "Print Design & Packaging",
-      "Illustrations",
+      "Tomato",
+      "Muslim Fruits",
+      "хлеб",
+      "Choco Green Sauce",
+      "Pizza",
+      "Pasta",
+      "Pudding Alike",
+      "Is That Rice?",
     ],
-    copy: "We build visual systems with a distinct personality, a clear point of view, and enough flexibility to grow with the brand.",
+    copy: "The pasta looks smashing babe! I'd love to eat some breadies with you.",
     images: [
-      "/day2/service-brand-1.gif",
-      "/day2/service-brand-2.jpg",
-      "/day2/service-brand-3.jpg",
-      "/day2/service-brand-4.jpg",
+      "/day2/food-1.jpg",
+      "/day2/food-2.jpg",
     ],
   },
   {

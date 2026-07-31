@@ -1167,9 +1167,33 @@
     display: none;
   }
 
+  .day6-service-card__header {
+    padding: 32px 20px 24px;
+    min-height: 140px;
+  }
+
+  .day6-service-card__header strong {
+    font-size: 32px;
+  }
+
+  .day6-service-card__header small {
+    font-size: 16px;
+  }
+
+  .day6-service-card.is-open .day6-service-card__body {
+    max-height: 3000px;
+    padding: 0 20px 32px;
+  }
+
+  .day6-service-card__details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
   .day6-service-tags {
-    max-height: 62px;
-    overflow: hidden;
+    max-height: none;
+    overflow: visible;
   }
 
   .day6-service-gallery {
@@ -1587,19 +1611,33 @@
 }
 
 .day6-service-card__details {
-  display: grid;
-  align-items: start;
-  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
-  gap: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
 }
 
 .day6-service-card__details > p {
-  font-size: 16px;
-  line-height: 1.55;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--day6-ink);
+  margin-top: 4px;
+  max-width: 65ch;
 }
 
 .day6-service-card .day6-service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-top: 0;
+  max-height: none !important;
+  overflow: visible !important;
+  width: 100%;
 }
 
 .day6-service-card .day6-service-gallery {
