@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   type CSSProperties,
   type FormEvent,
@@ -332,15 +333,11 @@ function SiteHeader({ tone = "light" }: { tone?: "light" | "dark" }) {
             ["Day-6", "/day6"],
             ["Day-7", "/day7"],
             ["Services", "/#services"],
-            ["Contact", "/#contact"],
           ].map(([label, href]) => (
             <a key={label} href={href} onClick={() => setOpen(false)}>
               {label}
             </a>
           ))}
-          <a className="menu-panel__email" href="mailto:contact@viciistudio.com">
-            contact@viciistudio.com
-          </a>
         </nav>
       </div>
     </>
@@ -349,46 +346,13 @@ function SiteHeader({ tone = "light" }: { tone?: "light" | "dark" }) {
 
 function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="site-footer__image">
-        <img src={A.hero} alt="Waveform Glow: A Red-Lit Modern Interior" />
-      </div>
-      <div className="site-footer__shade" />
-      <div className="site-footer__grid">
-        <div>
-          <h4>—Per Aspera Ad Astra</h4>
-          <form className="footer-signup" onSubmit={(event) => event.preventDefault()}>
-            <label className="sr-only" htmlFor="footer-email">
-              Email
-            </label>
-            <input
-              id="footer-email"
-              type="email"
-              placeholder="contact@viciistudio.com"
-            />
-            <button type="submit" aria-label="Submit email">
-              →
-            </button>
-          </form>
-        </div>
-        <nav aria-label="Footer navigation">
-          <a href="/">Home</a>
-          <a href="/day1">Day-1</a>
-          <a href="/day2">Day-2</a>
-          <a href="/day3">Day-3</a>
-          <a href="/day4">Day-4</a>
-          <a href="/day5">Day-5</a>
-          <a href="/day6">Day-6</a>
-          <a href="/day7">Day-7</a>
-          <a href="/#services">Services</a>
-          <a href="/#contact">Contact</a>
-          <small>All Rights Reserved.</small>
-        </nav>
-      </div>
-      <div className="site-footer__logo" aria-label="TUNI Studio">
-        <span>TUNI</span>
-        <sup>®</sup>
-        <em>Studio</em>
+    <footer className="site-footer" style={{ minHeight: "auto", background: "transparent" }}>
+      <div className="site-footer__image" style={{ height: "auto", overflow: "hidden" }}>
+        <img
+          src="/footer-image.png"
+          alt="Tunisia Footer"
+          style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }}
+        />
       </div>
     </footer>
   );
@@ -435,9 +399,6 @@ function ContactSection() {
           <button type="submit">{sent ? "Thank you" : "Submit"}</button>
         </form>
       </div>
-      <a className="contact-section__email" href="mailto:contact@viciistudio.com">
-        contact@viciistudio.com
-      </a>
     </section>
   );
 }
@@ -469,24 +430,16 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 function HomeHero() {
   return (
     <section className="home-hero">
-      <img className="home-hero__background" src={A.hero} alt="Surreal Portrait Blur" />
+      <img className="home-hero__background" src="/tunisia-journey.jpg" alt="Your Journey in Tunisia" />
       <div className="home-hero__shade" />
       <div className="home-hero__tagline">
-        Stories you can feel,
+        Your journey in Tunisia!
         <br />
-        moments you can keep
+        Sousse specifically
       </div>
-      <div className="home-hero__motto">—Per Aspera ad Astra</div>
-      <div className="home-hero__serial home-hero__serial--left">
-        00600 93C7 9002
-      </div>
-      <div className="home-hero__serial home-hero__serial--right">
-        00600 93C7 9002
-      </div>
-      <div className="home-hero__title" aria-label="TUNI Studio">
+      <div className="home-hero__motto">—25 July till 1 August</div>
+      <div className="home-hero__title" aria-label="TUNI">
         <strong>TUNI</strong>
-        <sup>®</sup>
-        <span>Studio</span>
       </div>
     </section>
   );
@@ -496,17 +449,11 @@ function MottoCollage() {
   return (
     <section className="motto-collage" data-scroll-scene>
       <div className="motto-collage__sticky">
-        <div className="motto-collage__word motto-collage__word--veni">VENI</div>
-        <div className="motto-collage__word motto-collage__word--vidi">VIDI</div>
         <div className="motto-collage__word motto-collage__word--vici">TUNI</div>
-        <img className="motto-collage__a" src={A.collageA} alt="a man in a room" />
-        <img
-          className="motto-collage__b"
-          src={A.collageB}
-          alt="people walking in a hallway"
-        />
-        <img className="motto-collage__c" src={A.collageC} alt="a man in an office" />
-        <img className="motto-collage__d" src={A.collageD} alt="a room with chairs" />
+        <img className="motto-collage__a" src="/collage-1.jpg" alt="Tunisia collage 1" />
+        <img className="motto-collage__b" src="/collage-2.jpg" alt="Tunisia collage 2" />
+        <img className="motto-collage__c" src="/collage-3.jpg" alt="Tunisia collage 3" />
+        <img className="motto-collage__d" src="/collage-4.jpg" alt="Tunisia collage 4" />
       </div>
     </section>
   );
@@ -516,26 +463,21 @@ function Glimpse() {
   return (
     <section className="glimpse">
       <div className="glimpse__hero" data-reveal>
-        <img src={A.glimpseMain} alt="Futuristic Fashion Fusion" />
+        <img src="/glimpse-hero.jpg" alt="Glimpse of TUNI" />
       </div>
       <div className="glimpse__copy" data-reveal>
         <h2>
           <em>Glimpse of</em> TUNI
         </h2>
         <p>
-          TUNI is a multidisciplinary creative studio focused on artistic
-          direction, fashion design, textile and industrial design,
-          illustration, graphic identity, editorial design, web design, and
-          music direction. As a next-generation startup dedicated to
-          multidisciplinary experimentation and cultural impact, TUNI crafting
-          visual narratives that evoke emotion, silence, and rhythm.
+          Tunisia is a North African country on the Mediterranean coast known for its blend of Roman, Arab, and French history, moving from green coastal mountains down into the Sahara Desert. One of its premier coastal destinations is Sousse, a major port city famous for its UNESCO-listed ancient medina, historic fortifications, and vibrant beach resorts that attract travelers from around the world.
         </p>
       </div>
       <div className="glimpse__grid">
-        <img src={A.glimpseA} alt="minimalist workspace" />
-        <img src={A.glimpseB} alt="Fashion portrait in red" />
-        <img src={A.glimpseC} alt="Editorial fashion portrait" />
-        <img src={A.glimpseD} alt="Casual Office or Café Gathering" />
+        <img src="/glimpse-1.jpg" alt="Tunisia Glimpse 1" />
+        <img src="/glimpse-2.jpg" alt="Tunisia Glimpse 2" />
+        <img src="/glimpse-3.jpg" alt="Tunisia Glimpse 3" />
+        <img src="/glimpse-4.jpg" alt="Tunisia Glimpse 4" />
       </div>
     </section>
   );
@@ -545,11 +487,11 @@ function CinematicScene() {
   return (
     <section className="cinematic-scene" data-scroll-scene>
       <div className="cinematic-scene__sticky">
-        <img className="cinematic-scene__frame frame-one" src={A.darkA} alt="" />
-        <img className="cinematic-scene__frame frame-two" src={A.darkB} alt="" />
-        <img className="cinematic-scene__frame frame-three" src={A.darkC} alt="" />
-        <img className="cinematic-scene__frame frame-four" src={A.darkD} alt="" />
-        <h2>Our Projects</h2>
+        <img className="cinematic-scene__frame frame-one" src="/cinematic-1.jpg" alt="Sousse 1" />
+        <img className="cinematic-scene__frame frame-two" src="/cinematic-2.jpg" alt="Sousse 2" />
+        <img className="cinematic-scene__frame frame-three" src="/cinematic-3.jpg" alt="Sousse 3" />
+        <img className="cinematic-scene__frame frame-four" src="/cinematic-4.jpg" alt="Sousse 4" />
+        <h2>Sousse, Tunisia</h2>
       </div>
     </section>
   );
@@ -559,14 +501,12 @@ function Services() {
   return (
     <section className="services" id="services">
       <div className="services__copy" data-reveal>
-        <h2>Our Services</h2>
+        <h2>7 Days in Tunisia</h2>
         <p>
-          Visual Identity Creation | Narrative Strategy | Art Direction &amp;
-          Editorial Styling | Packaging &amp; Object Design
+          Arrival | Blacko | Trumpie Cat | Blue Jellyfish | Nuggets | Swim | Shopping | Home
         </p>
-        <p>
-          Website &amp; Digital Experience Design | Cultural Consulting &amp;
-          Creative Research
+        <p style={{ marginTop: "1rem", fontSize: "0.85rem", opacity: 0.8, textTransform: "uppercase", letterSpacing: "0.1em", fontFamily: "monospace" }}>
+          Press Each Picture Below Or Navigate Through The Button On Top Right Corner
         </p>
       </div>
     </section>
@@ -574,22 +514,61 @@ function Services() {
 }
 
 function HorizontalGallery() {
-  const images = [A.railA, A.railB, A.railC, A.railD];
-  const labels = [
-    "NØRA packaging",
-    "NØRA quiet comfort",
-    "Painted textile detail",
-    "Editorial environment",
+  const days = [
+    {
+      day: "Day 1",
+      title: "Arrival",
+      image: "/day-thumb-1.jpg",
+      href: "/day1",
+    },
+    {
+      day: "Day 2",
+      title: "Blacko",
+      image: "/day-thumb-2.jpg",
+      href: "/day2",
+    },
+    {
+      day: "Day 3",
+      title: "Trumpie Cat",
+      image: "/day-thumb-3.jpg",
+      href: "/day3",
+    },
+    {
+      day: "Day 4",
+      title: "Blue Jellyfish",
+      image: "/day-thumb-4.jpg",
+      href: "/day4",
+    },
+    {
+      day: "Day 5",
+      title: "Nuggets",
+      image: "/day-thumb-5.jpg",
+      href: "/day5",
+    },
+    {
+      day: "Day 6",
+      title: "Swim",
+      image: "/day-thumb-6.jpg",
+      href: "/day6",
+    },
+    {
+      day: "Day 7",
+      title: "Shopping & Home",
+      image: "/day-thumb-7.jpg",
+      href: "/day7",
+    },
   ];
 
   return (
     <section className="horizontal-gallery" data-scroll-scene>
       <div className="horizontal-gallery__sticky">
         <div className="horizontal-gallery__track">
-          {images.map((image, index) => (
-            <figure key={image}>
-              <img src={image} alt={labels[index]} />
-            </figure>
+          {days.map((item) => (
+            <Link key={item.day} href={item.href} style={{ textDecoration: "none", color: "inherit" }}>
+              <figure style={{ cursor: "pointer", position: "relative", overflow: "hidden", borderRadius: "1rem" }}>
+                <img src={item.image} alt={`${item.day} - ${item.title}`} />
+              </figure>
+            </Link>
           ))}
         </div>
       </div>
@@ -609,14 +588,8 @@ export function HomePage() {
         <MottoCollage />
         <Glimpse />
         <CinematicScene />
-        <section className="project-list">
-          {projectList.map((project, index) => (
-            <ProjectCard key={project.key} project={project} index={index} />
-          ))}
-        </section>
         <Services />
         <HorizontalGallery />
-        <ContactSection />
       </main>
       <Footer />
     </div>

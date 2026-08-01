@@ -192,21 +192,21 @@
   }
 
   .glimpse {
-    padding: 0 0.7rem 0.7rem;
+    padding: 2rem 0.7rem 0.7rem;
   }
 
   .glimpse__hero {
-    height: clamp(28rem, 68svh, 42rem);
+    height: clamp(24rem, 58svh, 36rem);
   }
 
   .glimpse__copy {
     margin: 0;
-    padding: clamp(4.5rem, 13svh, 7rem) 0.7rem;
+    padding: 2rem 0.7rem;
   }
 
   .glimpse__copy h2 {
-    font-size: clamp(2.8rem, 14vw, 4.2rem);
-    line-height: 0.92;
+    font-size: clamp(2.5rem, 12vw, 3.8rem);
+    line-height: 0.95;
   }
 
   .glimpse__copy h2 em {
@@ -215,7 +215,7 @@
 
   .glimpse__copy p {
     max-width: 31rem;
-    margin: 2.2rem auto 0;
+    margin: 1rem auto 0;
     font-size: clamp(0.86rem, 3.7vw, 1rem);
     line-height: 1.58;
   }
@@ -223,7 +223,7 @@
   .glimpse__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.55rem;
+    gap: 0.35rem;
   }
 
   .glimpse__grid img,
@@ -231,13 +231,17 @@
   .glimpse__grid img:nth-child(3) {
     width: 100%;
     height: auto;
-    aspect-ratio: 0.82;
+    aspect-ratio: 0.9;
+    object-fit: cover;
   }
 
   .glimpse__grid img:first-child,
   .glimpse__grid img:last-child {
     grid-column: 1 / -1;
-    aspect-ratio: 1.28;
+    aspect-ratio: 1.35;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 
   .cinematic-scene,
@@ -738,16 +742,25 @@
   }
 
   .glimpse__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.35rem;
   }
 
   .glimpse__grid img,
   .glimpse__grid img:nth-child(2),
-  .glimpse__grid img:nth-child(3),
+  .glimpse__grid img:nth-child(3) {
+    grid-column: auto;
+    aspect-ratio: 0.9;
+    object-fit: cover;
+  }
+
   .glimpse__grid img:first-child,
   .glimpse__grid img:last-child {
-    grid-column: auto;
-    aspect-ratio: 1.1;
+    grid-column: 1 / -1;
+    aspect-ratio: 1.35;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 
   .masonry-gallery {

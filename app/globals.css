@@ -325,9 +325,9 @@ dd {
   inset: 0 50% 0 0;
   background:
     linear-gradient(90deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.42)),
-    url("/assets/99354a9d226b8774.avif") center / cover;
-  opacity: 0.42;
-  filter: saturate(0.8);
+    url("/footer-image.png") center / cover;
+  opacity: 0.85;
+  filter: saturate(1);
 }
 
 .menu-panel__content {
@@ -609,23 +609,26 @@ dd {
 
 .glimpse__grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  grid-template-rows: minmax(14rem, 26vw) minmax(9rem, 15vw) minmax(15rem, 25vw);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.6rem;
 }
 
 .glimpse__grid img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
 }
 
-.glimpse__grid img:first-child {
-  grid-row: span 2;
-}
-
+.glimpse__grid img:first-child,
 .glimpse__grid img:nth-child(4) {
   grid-column: 1 / -1;
+  aspect-ratio: 1.7;
+}
+
+.glimpse__grid img:nth-child(2),
+.glimpse__grid img:nth-child(3) {
+  grid-column: auto;
+  aspect-ratio: 1;
 }
 
 .cinematic-scene {
@@ -1566,45 +1569,54 @@ dd {
   }
 
   .glimpse {
-    padding: 0 0.8rem 1rem;
+    padding: 1.5rem 0.7rem 0.7rem;
   }
 
   .glimpse__hero {
-    height: 52vh;
+    height: 48vh;
   }
 
   .glimpse__copy {
-    margin: 3.5rem auto 4.5rem;
-    padding: 0 1.2rem;
+    margin: 1.8rem auto 1.8rem;
+    padding: 0 0.8rem;
   }
 
   .glimpse__copy h2 {
-    font-size: 3.2rem;
+    font-size: 2.6rem;
   }
 
   .glimpse__copy h2 em {
-    display: block;
+    display: inline;
   }
 
   .glimpse__copy p {
-    font-size: 0.72rem;
-    line-height: 1.42;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-top: 1rem;
   }
 
   .glimpse__grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.35rem;
   }
 
   .glimpse__grid img {
+    width: 100%;
     height: auto;
-    aspect-ratio: 0.95 / 1;
+    object-fit: cover;
+  }
+
+  .glimpse__grid img:first-child,
+  .glimpse__grid img:last-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 1.35;
   }
 
   .glimpse__grid img:nth-child(2),
   .glimpse__grid img:nth-child(3) {
-    aspect-ratio: 1.4 / 1;
+    grid-column: auto;
+    aspect-ratio: 0.9;
   }
 
   .cinematic-scene {
