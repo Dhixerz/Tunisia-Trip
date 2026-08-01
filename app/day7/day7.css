@@ -29,7 +29,7 @@
 .day7-container {
   font-family: "Space Grotesk", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  background-color: var(--background);
+  background-color: var(--sand);
   color: var(--foreground);
 }
 

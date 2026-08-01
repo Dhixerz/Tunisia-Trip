@@ -66,9 +66,8 @@ export function PhotoFrame({
       <figcaption
         className="pointer-events-none absolute left-1 top-[calc(100%+10px)] flex items-baseline gap-3 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
         style={{
-          opacity: hovered ? 1 : 0,
-          transform: `translateY(${hovered ? 0 : 8}px)`,
-          transitionDelay: hovered ? "100ms" : "0ms",
+          opacity: 1,
+          transform: "translateY(0px)",
         }}
       >
         <span className="eyebrow text-mauve">{time}</span>

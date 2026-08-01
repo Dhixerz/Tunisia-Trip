@@ -41,7 +41,7 @@ export function DayChapter({
     <section
       id={`day-${day}`}
       ref={ref}
-      className={`relative overflow-hidden py-24 lg:py-32 ${tinted ? "bg-sand" : "bg-paper"}`}
+      className={`relative py-12 lg:py-20 ${tinted ? "bg-sand" : "bg-paper"}`}
     >
       <div className="mx-auto max-w-[1280px] px-6">
         <div
@@ -49,13 +49,13 @@ export function DayChapter({
             flip ? "lg:[&>*:first-child]:order-2" : ""
           }`}
         >
-          <div className={flip ? "lg:pl-[8%]" : "lg:pr-[6%] lg:pt-16"}>
+          <div className={flip ? "lg:pl-[4%]" : "lg:pr-[4%] lg:pt-8"}>
             <div className="flex items-baseline gap-4">
               <span className="font-display text-[clamp(3rem,7vw,5.5rem)] leading-none text-violet">
                 {day}
               </span>
               <span className="eyebrow text-mauve">
-                {date} · {place}
+                {date ? `${date} · ${place}` : place}
               </span>
             </div>
             <h2 className="mt-5 text-[clamp(1.8rem,3.6vw,2.8rem)] leading-[0.95]">{title}</h2>
@@ -66,7 +66,7 @@ export function DayChapter({
             </p>
           </div>
 
-          <div className={flip ? "lg:pt-24" : "lg:pt-0"}>
+          <div className={flip ? "lg:pt-8" : "lg:pt-0"}>
             <PhotoFrame
               src={image}
               alt={alt}
@@ -76,7 +76,7 @@ export function DayChapter({
               height={height}
               rotate={flip ? 1.5 : -1.5}
               accent={flip ? "violet" : "teal"}
-              className={flip ? "lg:mr-[-8vw]" : "lg:ml-[-6vw]"}
+              className="w-full max-w-[650px] mx-auto"
               drift={flip ? 14 : -14}
             />
           </div>

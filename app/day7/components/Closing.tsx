@@ -2,10 +2,10 @@ import { Compass, Stitch } from "./Doodles";
 import { useReveal } from "./useReveal";
 
 const STATS = [
-  { k: "Kilometres by road", v: "1,148" },
-  { k: "Photos captured", v: "612" },
-  { k: "Glasses of tea", v: "37" },
-  { k: "Nights under sand", v: "2" },
+  { k: "Kilometres away from Russia", v: "5.508" },
+  { k: "Photos sent", v: "18" },
+  { k: "Love from ur girl", v: "∞" },
+  { k: "Nights under African Skies", v: "7" },
 ];
 
 export function Closing() {
@@ -38,14 +38,11 @@ export function Closing() {
           style={{ border: "3px solid var(--ink)", "--ry": "24px" } as React.CSSProperties}
         >
           <div className="p-10 lg:p-14" style={{ borderRight: "2px dashed var(--ink)" }}>
-            <span className="eyebrow text-violet">Postcard, written on the plane</span>
+            <span className="eyebrow text-violet">Postcard, written from Indonesia</span>
             <p className="mt-6 font-hand text-[26px] leading-[1.35] text-ink">
-              Lina — seven days and I still catch sand in the pocket of my jacket. I kept the ticket
-              from the Douz bus, the one you folded into a triangle. Next time we go further south,
-              and we stay an extra night on the ridge. I love you. Thank you for the wind, the tea,
-              and the singing in the car at 2 a.m.
+              You are in Tunisia but the postcard is from Indonesia, why? Because I have the power to do so. I just want to say that I am truly happy you enjoyed your time in Tunisia. I do miss you a lot here from Indonesia. And I also really do want to smash some men in Tunisia. Watch closely, it's gonna be us together for your next trip! I can't wait to talk and play with you more ^^ Welcome back to Russia, love.
             </p>
-            <p className="mt-10 font-hand text-[30px] text-mauve">— Y.</p>
+            <p className="mt-10 font-hand text-[30px] text-mauve">— D.</p>
           </div>
           <div className="flex flex-col justify-between gap-8 bg-sand p-10 lg:p-14">
             <div className="flex justify-end">
@@ -62,11 +59,11 @@ export function Closing() {
               <Stitch className="h-3 w-2/3 text-ink/40" />
             </div>
             <a
-              href="#day-05"
+              href="/"
               className="inline-flex h-[45px] items-center justify-center bg-ink px-6 text-[12px] font-semibold uppercase tracking-[0.28em] text-sand transition-colors duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-paper hover:text-ink"
               style={{ border: "2px solid var(--ink)" }}
             >
-              Read day 05 again
+              Back to Home
             </a>
           </div>
         </div>
