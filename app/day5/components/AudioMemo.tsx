@@ -52,6 +52,14 @@ export function AudioMemo() {
         ref={audioRef}
         src="/day5/macarena.mp3"
         preload="metadata"
+        onPlay={() => {
+          setPlaying(true);
+          window.dispatchEvent(new CustomEvent("pause-bg-music"));
+        }}
+        onPause={() => {
+          setPlaying(false);
+          window.dispatchEvent(new CustomEvent("resume-bg-music"));
+        }}
         onTimeUpdate={() => {
           if (audioRef.current) setCurrentTime(audioRef.current.currentTime);
         }}
@@ -68,6 +76,7 @@ export function AudioMemo() {
         onEnded={() => {
           setPlaying(false);
           setCurrentTime(0);
+          window.dispatchEvent(new CustomEvent("resume-bg-music"));
         }}
       />
       <div className="flex items-center gap-4">

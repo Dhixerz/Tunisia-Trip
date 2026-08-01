@@ -419,7 +419,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <em>{project.service}</em>
         {project.audio ? (
           <div className="mt-6">
-            <audio controls src={project.audio} className="w-full max-w-sm rounded-full accent-umber" />
+            <audio
+              controls
+              src={project.audio}
+              className="w-full max-w-sm rounded-full accent-umber"
+              onPlay={() => window.dispatchEvent(new CustomEvent("pause-bg-music"))}
+              onPause={() => window.dispatchEvent(new CustomEvent("resume-bg-music"))}
+              onEnded={() => window.dispatchEvent(new CustomEvent("resume-bg-music"))}
+            />
           </div>
         ) : null}
       </div>

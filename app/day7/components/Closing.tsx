@@ -43,6 +43,19 @@ export function Closing() {
               You are in Tunisia but the postcard is from Indonesia, why? Because I have the power to do so. I just want to say that I am truly happy you enjoyed your time in Tunisia. I do miss you a lot here from Indonesia. And I also really do want to smash some men in Tunisia. Watch closely, it's gonna be us together for your next trip! I can't wait to talk and play with you more ^^ Welcome back to Russia, love.
             </p>
             <p className="mt-10 font-hand text-[30px] text-mauve">— D.</p>
+            <div className="mt-8">
+              <a
+                href="/audio/day7.mp3"
+                download="Tunisia Dream.mp3"
+                className="inline-flex h-[42px] items-center gap-2 bg-violet px-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-sand transition-colors duration-300 hover:bg-ink hover:text-sand"
+                style={{ border: "2px solid var(--ink)" }}
+              >
+                <svg className="h-4 w-4 stroke-current" fill="none" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download "Tunisia Dream" Song
+              </a>
+            </div>
           </div>
           <div className="flex flex-col justify-between gap-8 bg-sand p-10 lg:p-14">
             <div className="flex justify-end">

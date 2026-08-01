@@ -356,6 +356,17 @@ export default function Day2Page() {
   const [statsStarted, setStatsStarted] = useState(false);
   const [videoPlaying, setVideoPlaying] = useState(true);
 
+  useEffect(() => {
+    if (activeService !== null) {
+      const title = SERVICES[activeService]?.title;
+      if (title === "Rita!" || title === "Muslim Prayer") {
+        window.dispatchEvent(new CustomEvent("pause-bg-music"));
+        return () => {
+          window.dispatchEvent(new CustomEvent("resume-bg-music"));
+        };
+      }
+    }
+  }, [activeService]);
 
   useEffect(() => {
     const root = rootRef.current;

@@ -50,6 +50,8 @@ export const viewport: Viewport = {
   themeColor: "#000000",
 };
 
+import GlobalAudioPlayer from "./components/GlobalAudioPlayer";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -68,6 +70,7 @@ export default function RootLayout({
       <body>
         {children}
         <GallerySevenCards />
+        <GlobalAudioPlayer />
       </body>
     </html>
   );
