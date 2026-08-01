@@ -1,10 +1,10 @@
 const heroDunes = "/day5/hero-dunes.jpg";
 const pCamels = "/day5/p-camels.jpg";
 const pTea = "/day5/p-tea.jpg";
-import { Compass, PlaneTrail, Stamp } from "./Doodles";
+import { PlaneTrail, Stamp } from "./Doodles";
 import { useHeroScroll } from "./useReveal";
 
-const WORD = "TUNISIA";
+const WORD = "Sousse";
 
 export function Hero() {
   const { ref } = useHeroScroll();
@@ -12,97 +12,88 @@ export function Hero() {
   return (
     <header
       ref={ref}
-      className="relative min-h-[100svh] overflow-hidden border-b-2 border-ink"
+      className="relative min-h-[100svh] overflow-hidden border-b-2 border-ink bg-sand/30"
       style={{ "--p": 0 } as React.CSSProperties}
     >
       <div className="pointer-events-none absolute inset-0 grain-drift" aria-hidden="true" />
 
-      <div className="mx-auto grid min-h-[100svh] max-w-[1280px] grid-cols-1 items-center gap-10 px-6 pb-24 pt-28 lg:grid-cols-[1fr_0.95fr] lg:pt-32">
+      <div className="mx-auto grid min-h-[100svh] max-w-[1280px] grid-cols-1 items-center gap-12 px-6 pb-20 pt-28 lg:grid-cols-[1.05fr_0.95fr] lg:pt-32">
         <div className="relative z-10 self-center">
-          <p className="eyebrow text-mauve">Seven days · March 2026 · for Lina</p>
+          <p className="eyebrow text-mauve">July 29th, 2026</p>
 
-          <h1 className="mt-6 text-[clamp(3.2rem,11vw,7.5rem)] leading-[0.84]">
-            <span className="block italic" style={{ transform: "skewX(-6deg)" }}>
-              {WORD.split("").map((c, i) => (
-                <span
-                  key={i}
-                  className="inline-block"
-                  style={{
-                    transform: `translateX(calc(var(--p) * ${(i - 3) * 9}px)) translateY(calc(var(--p) * ${(i % 2 ? -1 : 1) * 6}px))`,
-                    transition: "transform 120ms linear",
-                  }}
-                >
-                  {c}
-                </span>
-              ))}
+          <h1 className="mt-4 text-[clamp(3.5rem,8vw,6.5rem)] font-bold leading-[0.9] tracking-tight">
+            <span className="block text-ink">
+              {WORD}
             </span>
-            <span className="mt-2 block text-[clamp(1.6rem,4.4vw,3rem)] leading-[0.95] text-mauve">
-              day by day
+            <span className="mt-3 block text-[clamp(1.8rem,3.8vw,2.8rem)] font-normal italic leading-none text-mauve">
+              Day 5
             </span>
           </h1>
 
-          <p className="mt-8 max-w-[38ch] text-[17px] leading-[1.6] text-ink/85">
-            Every road we took, every glass of tea that burned my fingers, every night the wind kept
-            rearranging the sand outside the tent. I wrote it all down before I could forget it.
+          <p className="mt-10 max-w-[42ch] text-[17px] leading-[1.65] text-ink/85">
+            It has been 5 days in Tuni Tuni babe! Were you feeling any Muslims energy on this day? Want to pray together? (In a Muslim way of course).
           </p>
 
           <div
             className="mt-10 inline-flex items-center gap-3 bg-sand px-4 py-2 hard-shadow"
-            style={{ border: "2px solid var(--ink)", transform: "rotate(-2.5deg)" }}
+            style={{ border: "2px solid var(--ink)", transform: "rotate(-2deg)" }}
           >
-            <span className="eyebrow">Day 05 — Douz, Tunisia</span>
+            <span className="eyebrow font-semibold">سوسة, xتونس</span>
           </div>
         </div>
 
-        <div className="relative min-h-[440px]">
+        <div className="relative min-h-[460px] md:min-h-[500px] w-full self-center">
+          {/* Main Photo (Desert / Dunes) */}
           <div
-            className="absolute right-[-14vw] top-0 w-[74%] bg-paper p-[6px] hard-shadow"
+            className="absolute right-0 top-0 w-[70%] bg-paper p-[6px] hard-shadow z-10"
             style={{
               border: "2px solid var(--ink)",
               transform:
-                "translate(calc((1 - var(--p)) * 70px), calc((1 - var(--p)) * -40px)) rotate(calc(2deg - var(--p) * 2deg))",
+                "translate(calc((1 - var(--p)) * 45px), calc((1 - var(--p)) * -30px)) rotate(calc(2deg - var(--p) * 2deg))",
               transition: "transform 140ms linear",
             }}
           >
             <img
               src={heroDunes}
-              alt="A figure in a blue scarf walking the ridge of a dune outside Douz"
+              alt="Desert landscape"
               width={1200}
               height={1500}
               className="block aspect-[4/5] w-full object-cover"
             />
           </div>
 
+          {/* Secondary Photo (Camels) */}
           <div
-            className="absolute bottom-6 left-0 w-[52%] bg-paper p-[6px] hard-shadow"
+            className="absolute bottom-6 left-0 w-[52%] bg-paper p-[6px] hard-shadow z-15"
             style={{
               border: "2px solid var(--ink)",
               transform:
-                "translate(calc((1 - var(--p)) * -80px), calc((1 - var(--p)) * 50px)) rotate(calc(-4deg + var(--p) * 1.5deg))",
+                "translate(calc((1 - var(--p)) * -45px), calc((1 - var(--p)) * 35px)) rotate(calc(-4deg + var(--p) * 1.5deg))",
               transition: "transform 140ms linear",
             }}
           >
             <img
               src={pCamels}
-              alt="Camels resting on the sand at sunset"
+              alt="Camel photo"
               width={1200}
               height={800}
               className="block aspect-[3/2] w-full object-cover"
             />
           </div>
 
+          {/* Accent Photo (Glass drink) */}
           <div
-            className="absolute bottom-[38%] left-[42%] w-[26%] bg-paper p-[5px] hard-shadow"
+            className="absolute bottom-[36%] left-[40%] w-[27%] bg-paper p-[5px] hard-shadow z-20"
             style={{
               border: "2px solid var(--ink)",
               transform:
-                "translate(calc((1 - var(--p)) * 40px), calc((1 - var(--p)) * 90px)) rotate(calc(6deg - var(--p) * 3deg))",
+                "translate(calc((1 - var(--p)) * 25px), calc((1 - var(--p)) * 50px)) rotate(calc(6deg - var(--p) * 3deg))",
               transition: "transform 140ms linear",
             }}
           >
             <img
               src={pTea}
-              alt="A small glass of mint tea on a tiled ledge"
+              alt="Glass drink photo"
               width={900}
               height={900}
               className="block aspect-square w-full object-cover"
@@ -111,7 +102,6 @@ export function Hero() {
         </div>
       </div>
 
-      <Compass className="pointer-events-none absolute bottom-10 left-8 h-14 w-14 text-ink/60" />
       <PlaneTrail className="pointer-events-none absolute right-[46%] top-24 hidden h-12 w-28 text-ink/50 lg:block" />
       <Stamp className="pointer-events-none absolute bottom-[18%] left-[43%] hidden h-12 w-12 text-mauve/70 lg:block" />
     </header>

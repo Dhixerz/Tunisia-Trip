@@ -80,13 +80,13 @@ export function Chrome({ theme = "dark" }: ChromeProps) {
       </header>
 
       <nav
-        className={`fixed inset-0 z-50 bg-ink/97 backdrop-blur-md transition-opacity duration-500 ${
+        className={`fixed inset-0 z-50 overflow-y-auto bg-ink/97 backdrop-blur-md transition-opacity duration-500 ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
         style={{ transitionTimingFunction: "cubic-bezier(0.4,0,0.2,1)" }}
         aria-hidden={!open}
       >
-        <ul className="flex h-full flex-col justify-center gap-2 px-8 max-w-3xl mx-auto md:px-16">
+        <ul className="mx-auto flex min-h-full max-w-3xl flex-col justify-center gap-1 px-8 py-20 md:gap-2 md:px-16 md:py-24">
           {navItems.map((item, i) => (
             <li
               key={item.label}
@@ -101,12 +101,12 @@ export function Chrome({ theme = "dark" }: ChromeProps) {
               <a
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="group flex items-center justify-between border-b border-bone/10 py-4 text-left"
+                className="group flex items-center justify-between border-b border-bone/10 py-2.5 text-left md:py-3"
               >
-                <span className="display-bold text-[clamp(2.2rem,5.5vw,4.2rem)] text-bone/80 transition-colors group-hover:text-bone">
+                <span className="display-bold text-[clamp(1.8rem,4vw,3.2rem)] text-bone/80 transition-colors group-hover:text-bone">
                   {item.label}
                 </span>
-                <span className="text-bone/40 text-xl font-light transition-all group-hover:translate-x-2 group-hover:text-bone">
+                <span className="text-xl font-light text-bone/40 transition-all group-hover:translate-x-2 group-hover:text-bone">
                   →
                 </span>
               </a>

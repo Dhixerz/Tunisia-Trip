@@ -338,10 +338,11 @@ dd {
   display: flex;
   width: 49%;
   flex-direction: column;
-  padding: clamp(4rem, 9vh, 6.5rem) clamp(2.5rem, 7vw, 7.5rem);
+  padding: clamp(3rem, 6vh, 4.5rem) clamp(2rem, 5vw, 5rem);
   background: rgba(0, 0, 0, 0.96);
   transform: translateX(102%);
   transition: transform 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+  overflow-y: auto;
 }
 
 .menu-panel.is-open .menu-panel__content {
@@ -351,8 +352,8 @@ dd {
 .menu-panel__content > a:not(.menu-panel__email) {
   width: max-content;
   font-family: var(--serif);
-  font-size: clamp(3.5rem, 5vw, 5.2rem);
-  line-height: 1.08;
+  font-size: clamp(2rem, 3.2vw, 3.8rem);
+  line-height: 1.15;
   transition: opacity 0.25s ease;
 }
 

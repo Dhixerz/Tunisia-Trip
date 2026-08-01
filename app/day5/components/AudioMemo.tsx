@@ -5,9 +5,8 @@ const BARS = [
   36, 31, 22, 14, 9, 17, 26, 35, 27, 18, 10, 6, 12, 20, 30, 24, 15, 9, 5, 11, 19, 28, 21, 13, 7,
 ];
 
-const DURATION = 84; // seconds
-
 function clock(s: number) {
+  if (isNaN(s) || s <= 0) return "0:00";
   const m = Math.floor(s / 60);
   const r = Math.floor(s % 60);
   return `${m}:${r.toString().padStart(2, "0")}`;
@@ -15,34 +14,62 @@ function clock(s: number) {
 
 export function AudioMemo() {
   const [playing, setPlaying] = useState(false);
-  const [t, setT] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(225); // initial duration fallback so it never displays 0:00
   const [pressed, setPressed] = useState(false);
-  const raf = useRef(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    if (!playing) return;
-    let last = performance.now();
-    const tick = (now: number) => {
-      const dt = (now - last) / 1000;
-      last = now;
-      setT((prev) => {
-        const next = prev + dt;
-        if (next >= DURATION) {
-          setPlaying(false);
-          return 0;
-        }
-        return next;
-      });
-      raf.current = requestAnimationFrame(tick);
-    };
-    raf.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf.current);
-  }, [playing]);
+    if (audioRef.current && audioRef.current.duration && !isNaN(audioRef.current.duration)) {
+      setDuration(audioRef.current.duration);
+    }
+  }, []);
 
-  const pct = (t / DURATION) * 100;
+  const togglePlay = () => {
+    if (!audioRef.current) return;
+    if (playing) {
+      audioRef.current.pause();
+      setPlaying(false);
+    } else {
+      audioRef.current.play().then(() => setPlaying(true)).catch(() => {});
+    }
+  };
+
+  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!audioRef.current || !duration) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const newTime = (clickX / rect.width) * duration;
+    audioRef.current.currentTime = newTime;
+    setCurrentTime(newTime);
+  };
+
+  const pct = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
     <div className="bg-ink px-5 py-4" style={{ border: "2px solid var(--ink)" }}>
+      <audio
+        ref={audioRef}
+        src="/day5/macarena.mp3"
+        preload="metadata"
+        onTimeUpdate={() => {
+          if (audioRef.current) setCurrentTime(audioRef.current.currentTime);
+        }}
+        onLoadedMetadata={() => {
+          if (audioRef.current && audioRef.current.duration) {
+            setDuration(audioRef.current.duration);
+          }
+        }}
+        onDurationChange={() => {
+          if (audioRef.current && audioRef.current.duration) {
+            setDuration(audioRef.current.duration);
+          }
+        }}
+        onEnded={() => {
+          setPlaying(false);
+          setCurrentTime(0);
+        }}
+      />
       <div className="flex items-center gap-4">
         <button
           type="button"
@@ -50,7 +77,7 @@ export function AudioMemo() {
           onMouseDown={() => setPressed(true)}
           onMouseUp={() => setPressed(false)}
           onMouseLeave={() => setPressed(false)}
-          onClick={() => setPlaying((p) => !p)}
+          onClick={togglePlay}
           className="flex h-[45px] w-[45px] shrink-0 items-center justify-center bg-sand text-ink transition-colors duration-200 hover:bg-teal"
           style={{ animation: playing ? "btn-press 350ms cubic-bezier(0.4,0,0.2,1)" : undefined }}
         >
@@ -69,18 +96,21 @@ export function AudioMemo() {
 
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline justify-between gap-3">
-            <span className="eyebrow truncate text-sand">Voice memo — dunes at 18:40</span>
+            <span className="eyebrow truncate text-sand">Los Del Rio - Macarena</span>
             <span
               className="text-[12px] tabular-nums text-teal"
               style={{ fontVariantNumeric: "tabular-nums" }}
             >
-              {clock(t)} / {clock(DURATION)}
+              {clock(currentTime)} / {clock(duration)}
             </span>
           </div>
 
-          <div className="mt-3 flex h-9 items-end gap-[3px]">
+          <div
+            className="mt-3 flex h-9 cursor-pointer items-end gap-[3px]"
+            onClick={handleSeek}
+          >
             {BARS.map((h, i) => {
-              const passed = (i / BARS.length) * 100 < pct;
+              const passed = (i / BARS.length) * 100 <= pct;
               return (
                 <span
                   key={i}
@@ -97,7 +127,10 @@ export function AudioMemo() {
             })}
           </div>
 
-          <div className="mt-3 h-[3px] w-full bg-sand/30">
+          <div
+            className="mt-3 h-[4px] w-full cursor-pointer bg-sand/30"
+            onClick={handleSeek}
+          >
             <div className="h-full bg-teal" style={{ width: `${pct}%` }} />
           </div>
         </div>

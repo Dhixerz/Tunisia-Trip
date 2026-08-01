@@ -71,7 +71,6 @@ export function PhotoFrame({
           transitionDelay: hovered ? "100ms" : "0ms",
         }}
       >
-        <span className="eyebrow text-mauve">{time}</span>
         <span className="font-hand text-[19px] leading-none text-ink">{caption}</span>
       </figcaption>
     </figure>

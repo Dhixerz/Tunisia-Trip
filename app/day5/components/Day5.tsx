@@ -1,11 +1,8 @@
-const videoUrl = "https://tunisia-diary-scrapbook.lovable.app/__l5e/assets-v1/a4c6b961-1206-48dc-9fdf-a7ad2339777b/day5-dunes.mp4";
-const pSouk = "/day5/p-souk.jpg";
-const pTea = "/day5/p-tea.jpg";
-const pAlley = "/day5/p-alley.jpg";
-const pBread = "/day5/p-bread.jpg";
-const pPalms = "/day5/p-palms.jpg";
-const pCamels = "/day5/p-camels.jpg";
-const pSand = "/day5/p-sand.jpg";
+const videoUrl = "/day5/tunisian-dance.mp4";
+const snapshot1 = "/day5/snapshot-1.jpg";
+const snapshot2 = "/day5/snapshot-2.jpg";
+const snapshot3 = "/day5/snapshot-3.jpg";
+const snapshot4 = "/day5/snapshot-4.jpg";
 import { AudioMemo } from "./AudioMemo";
 import { PhotoFrame } from "./PhotoFrame";
 import { ArrowScribble, Camera, MapPin, PalmLeaf, Stitch } from "./Doodles";
@@ -21,19 +18,15 @@ export function Day5() {
       <div className="relative mx-auto max-w-[1280px] px-6">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <span className="eyebrow text-violet">Day 05 · 14 March</span>
+            <span className="eyebrow text-violet">More Tuni Funsies</span>
             <h2 className="mt-3 text-[clamp(2.4rem,6vw,4.2rem)] leading-[0.9]">
-              Douz, and the
-              <br />
-              wind that never sat down
+              Some More Snapshots of Tuni
             </h2>
           </div>
           <div className="flex items-center gap-3 text-mauve">
             <MapPin className="h-9 w-7" />
             <span className="font-hand text-[22px] leading-tight text-ink">
-              33°27′N, 9°01′E
-              <br />
-              43 photos, 1 memo
+              Tunisia
             </span>
           </div>
         </div>
@@ -52,10 +45,10 @@ export function Day5() {
           <div className="grid grid-cols-12 gap-x-5 gap-y-16">
             <PhotoFrame
               className="col-span-12 sm:col-span-8"
-              src={pSouk}
-              alt="Spice cones stacked at a stall in the Douz souk"
-              caption="the paprika smelled like smoke"
-              time="09:12, souk in Douz"
+              src={snapshot1}
+              alt="Snapshot 1"
+              caption=""
+              time=""
               width={1000}
               height={1200}
               delay={0}
@@ -63,10 +56,10 @@ export function Day5() {
             />
             <PhotoFrame
               className="col-span-6 mt-24 sm:col-span-4"
-              src={pTea}
-              alt="Mint tea in a small glass"
-              caption="third glass, still too hot"
-              time="10:04, café Ali"
+              src={snapshot2}
+              alt="Snapshot 2"
+              caption=""
+              time=""
               width={900}
               height={900}
               rotate={-2.5}
@@ -76,10 +69,10 @@ export function Day5() {
             />
             <PhotoFrame
               className="col-span-6 -mt-8 sm:col-span-5"
-              src={pAlley}
-              alt="Blue door in a whitewashed alley"
-              caption="you knocked. nobody home."
-              time="11:38, off rue Farhat"
+              src={snapshot3}
+              alt="Snapshot 3"
+              caption=""
+              time=""
               width={900}
               height={1200}
               rotate={2}
@@ -88,38 +81,15 @@ export function Day5() {
             />
             <PhotoFrame
               className="col-span-12 mt-6 sm:col-span-7"
-              src={pBread}
-              alt="Hands tearing warm flatbread over a woven mat"
-              caption="bread baked under sand"
-              time="13:20, camp kitchen"
+              src={snapshot4}
+              alt="Snapshot 4"
+              caption=""
+              time=""
               width={1000}
               height={750}
               accent="violet"
               delay={210}
               drift={-14}
-            />
-            <PhotoFrame
-              className="col-span-7 sm:col-span-5"
-              src={pPalms}
-              alt="Sunlight through palm fronds"
-              caption="ten minutes of shade"
-              time="15:47, the oasis road"
-              width={900}
-              height={1100}
-              rotate={-1.5}
-              delay={280}
-              drift={-10}
-            />
-            <PhotoFrame
-              className="col-span-12 mt-20 sm:col-span-7"
-              src={pCamels}
-              alt="Camels resting at golden hour"
-              caption="Hedi said his camel is called Zina"
-              time="18:26, the last ridge"
-              width={1200}
-              height={800}
-              delay={350}
-              drift={-16}
             />
           </div>
 
@@ -139,13 +109,12 @@ export function Day5() {
                 <div style={{ border: "1px solid var(--ink)" }}>
                   <video
                     src={videoUrl}
-                    poster={pSand}
                     autoPlay
                     muted
                     loop
                     playsInline
                     className="block aspect-[4/3] w-full object-cover"
-                    aria-label="Sand drifting over the dune ridge at golden hour"
+                    aria-label="Tunisian dance video"
                   />
                 </div>
               </div>
@@ -171,8 +140,7 @@ export function Day5() {
                 className="font-hand text-[24px] leading-[1.25] text-ink"
                 style={{ transform: "rotate(-2deg)" }}
               >
-                I recorded this while the sun dropped — you can hear the wind hit the mic and me
-                laughing about it.
+                Next time it will be us dancing Macarena with those couples.
               </p>
             </div>
 
@@ -182,41 +150,7 @@ export function Day5() {
             >
               <AudioMemo />
             </div>
-
-            <Stitch className="mt-10 h-3 w-full text-ink/40" />
-
-            <div className="mt-10 flex items-center gap-5 text-mauve">
-              <Camera className="h-10 w-12" />
-              <PalmLeaf className="h-12 w-12" />
-              <span className="eyebrow">Media from this day</span>
-            </div>
           </div>
-        </div>
-
-        {/* ZONE C */}
-        <div
-          className="reveal relative z-10 mt-[-3rem] max-w-[46ch] bg-paper p-8 hard-shadow lg:ml-[6%] lg:mt-[-5rem]"
-          style={
-            {
-              border: "2px solid var(--ink)",
-              "--ry": "18px",
-              "--rd": "560ms",
-            } as React.CSSProperties
-          }
-        >
-          <span className="eyebrow text-violet">From the notebook</span>
-          <p className="mt-4 text-[16px] leading-[1.65] text-ink/90">
-            We left the guesthouse before the street was awake and the only sound was a man
-            dragging metal shutters up, one after another, down the whole row. In the souk a woman
-            pressed dried rose petals into my palm and refused the coins. By afternoon the sand had
-            worked into the seams of my shoes, my collar, the back of my watch.
-          </p>
-          <p className="mt-4 text-[16px] leading-[1.65] text-ink/90">
-            At 18:40 we sat on the ridge and stopped talking for a while. The wind kept picking the
-            top layer off the dune and putting it somewhere else. You said it looked like the desert
-            was breathing. I hit record so I would still have the sound of it in a year.
-          </p>
-          <p className="mt-6 font-hand text-[22px] leading-none text-mauve">— 11.4 km walked</p>
         </div>
       </div>
     </section>
