@@ -2,5 +2,16 @@
   "name": "tunisia-fun-trip",
   "compatibility_date": "2026-05-15",
   "compatibility_flags": ["nodejs_compat"],
-  "pages_build_output_dir": "dist/client"
+  "pages_build_output_dir": "dist/client",
+  "build": {
+    "command": "npm install --force && npm run build && cp dist/server/index.js dist/client/_worker.js"
+  },
+  "env": {
+    "production": {
+      "vars": {
+        "SKIP_DEPENDENCY_INSTALL": "true",
+        "NODE_VERSION": "22"
+      }
+    }
+  }
 }
